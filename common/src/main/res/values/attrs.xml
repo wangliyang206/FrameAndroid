@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ListView">
+        <!-- Reference to an array resource that will populate the ListView.  For static content,
+             this is simpler than populating the ListView programmatically. -->
+        <attr name="android:entries" />
+        <!-- Drawable or color to draw between list items. -->
+        <attr name="android:divider"/>
+        <!-- Height of the divider. Will use the intrinsic height of the divider if this
+             is not specified. -->
+        <attr name="android:dividerHeight" />
+        <!-- When set to false, the ListView will not draw the divider after each header view.
+             The default value is true. -->
+        <attr name="android:headerDividersEnabled"/>
+        <!-- When set to false, the ListView will not draw the divider before each footer view.
+             The default value is true. -->
+        <attr name="android:footerDividersEnabled"/>
+        <!-- Drawable to draw above list content. -->
+        <attr name="android:overScrollHeader"/>
+        <!-- Drawable to draw below list content. -->
+        <attr name="android:overScrollFooter"/>
+    </declare-styleable>
+    
+    <declare-styleable name="NumberPicker">
+        <attr name="normalTextColor" format="color" />
+        <attr name="normalTextSize" format="dimension" />
+        <attr name="selecredTextColor" format="color" />
+        <attr name="selecredTextSize" format="dimension" />
+        <attr name="unitHight" format="dimension" />
+        <attr name="itemNumber" format="integer"/>
+        <attr name="lineColor" format="color" />
+        <attr name="maskHight" format="dimension"/>
+        <attr name="noEmpty" format="boolean"/>
+        <attr name="isEnable" format="boolean"/>
+    </declare-styleable>
+    
+    <declare-styleable name="SlidingMenu">
+        <attr name="mode">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+        </attr>
+        <attr name="viewAbove" format="reference" />
+        <attr name="viewBehind" format="reference" />
+        <attr name="behindOffset" format="dimension" />
+        <attr name="behindWidth" format="dimension" />
+        <attr name="behindScrollScale" format="float" />
+        <attr name="touchModeAbove">
+            <enum name="margin" value="0" />
+            <enum name="fullscreen" value="1" />
+        </attr>
+        <attr name="touchModeBehind">
+            <enum name="margin" value="0" />
+            <enum name="fullscreen" value="1" />
+        </attr>
+        <attr name="shadowDrawable" format="reference" />
+        <attr name="shadowWidth" format="dimension" />
+        <attr name="fadeEnabled" format="boolean" />
+        <attr name="fadeDegree" format="float" />
+        <attr name="selectorEnabled" format="boolean" />
+        <attr name="selectorDrawable" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="roundedimageview">
+        <attr name="border_thickness" format="dimension" />
+        <attr name="border_inside_color" format="color" />
+        <attr name="border_outside_color" format="color"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="SwipeBackLayout">
+        <attr name="edge_size" format="dimension"/>
+        <attr name="edge_flag">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+            <enum name="bottom" value="2" />
+            <enum name="all" value="3" />
+        </attr>
+        <attr name="shadow_left" format="reference"/>
+        <attr name="shadow_right" format="reference"/>
+        <attr name="shadow_bottom" format="reference"/>
+    </declare-styleable>
+
+    <attr name="SwipeBackLayoutStyle" format="reference"/>
+</resources>

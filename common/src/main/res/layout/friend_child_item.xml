@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/setting_btn_channel_bg"
+    android:orientation="horizontal" >
+    <ImageView 
+        android:id="@+id/friend_icon"
+        android:layout_width="40.0dp"
+        android:layout_height="40.0dp"
+        android:layout_margin="3dip"/>
+    
+	<TextView 
+	    android:id="@+id/friend_nickname"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_toRightOf="@id/friend_icon"
+	    android:layout_centerInParent="true"
+	    android:textColor="@color/commonnewslistitemlayout_textcolor_dark"
+	    android:textSize="@dimen/small_textsize"
+	    android:text="游戏人间"/>
+	<!-- 
+	<TextView 
+	    android:id="@+id/friend_unread"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_toRightOf="@id/friend_nickname"
+	    android:padding="2dp"
+	    android:textSize="13sp"
+	    android:textColor="#ffffff"
+	    android:gravity="center"
+	    android:text="0"/> -->
+	
+	<!-- 在线状态 -->
+	<ImageView 
+	    android:id="@+id/friend_state"
+	    android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+	    android:layout_centerInParent="true"
+	    android:layout_marginRight="10dp"
+	    android:layout_alignParentRight="true"/>
+	
+	<!-- interval_line -->
+	<TextView 
+	    android:layout_below="@id/friend_icon"
+	    android:layout_width="fill_parent"
+	    android:layout_height="0.1px"
+	    android:background="#C0C0C0"/>
+</RelativeLayout>

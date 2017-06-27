@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10.0dp"
+        android:paddingLeft="30.0dp"
+        android:paddingTop="10.0dp" >
+
+        <LinearLayout
+            android:id="@+id/linla_refreshHeadLayout_linearTips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="left"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/txvi_refreshHeadLayout_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/common_pull_down_to_refresh"
+                android:textColor="@color/refreshheadlayout_refresh_text_color"
+                android:textSize="@dimen/refreshheadlayout_refresh_textsize_small" />
+
+            <TextView
+                android:id="@+id/txvi_refreshHeadLayout_lastUpdated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/common_last_update"
+                android:textColor="@color/refreshheadlayout_refresh_text_color"
+                android:textSize="@dimen/refreshheadlayout_refresh_updated_textsize_micro" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5.0dp"
+            android:layout_toLeftOf="@+id/linla_refreshHeadLayout_linearTips" >
+
+            <ImageView
+                android:id="@+id/imgvi_refreshHeadLayout_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_arrow_down" />
+
+            <ProgressBar
+                android:id="@+id/probar_refreshHeadLayout"
+                style="@android:style/Widget.ProgressBar.Small.Inverse"
+                android:layout_width="25.0dp"
+                android:layout_height="25.0dp"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+        </FrameLayout>
+    </RelativeLayout>
+
+</LinearLayout>

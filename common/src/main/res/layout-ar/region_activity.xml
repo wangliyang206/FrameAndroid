@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <!-- 头部 -->
+
+    <RelativeLayout
+        android:id="@+id/rel_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fbfbfb" >
+
+        <ImageView
+            android:id="@+id/imgvi_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingBottom="5dp"
+            android:paddingLeft="18dp"
+            android:paddingRight="15dp"
+            android:paddingTop="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/arabback" />
+
+        <TextView
+            android:id="@+id/title_tevi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/black_color"
+            android:text="@string/select_area"
+            android:textSize="@dimen/normal_textsize" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#f0f0f0"
+        android:orientation="horizontal" >
+
+        <!-- 省 -->
+
+        <LinearLayout
+            android:id="@+id/linla_regionActivity_province"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <!-- 分隔线 -->
+
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/line_vertical_green" />
+
+        <!-- 市 -->
+
+        <LinearLayout
+            android:id="@+id/linla_regionActivity_city"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <!-- 分隔线 -->
+
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/line_vertical_green" />
+
+        <!-- 区 -->
+
+        <LinearLayout
+            android:id="@+id/linla_regionActivity_area"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 新闻详细界面listview标题 -->
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp">
+    
+    <TextView 
+        android:id="@+id/txtvi_news_list_header_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text=""/>
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        
+        <TextView
+            android:id="@+id/txtvi_news_list_header_date" 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""/>
+        
+        <TextView 
+            android:id="@+id/txtvi_news_list_header_source"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text=""/>
+     </LinearLayout>
+
+</LinearLayout>

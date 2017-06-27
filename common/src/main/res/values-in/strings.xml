@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="common_error_data">data rusak</string>
+    <string name="scan_text">masukan kode QR pada kotak</string>
+    <string name="select_scan">pilih kode QR / bar code</string>
+    <string name="picture_error">format kesalahan gambar</string>
+    <string name="qr_code">QR code</string>
+    <!-- 通用部分 -->
+
+    <string name="common_no">tidak</string>
+    <string name="common_yes">ya</string>
+    <string name="common_check_network">tolong cek jaringan</string>
+    <string name="common_warm_prompt">tips</string>
+    <string name="common_approved">info sertivikasi (disetujui)</string>
+    <string name="common_audit_failure">info sertivikasi (kegagalan audit)</string>
+    <string name="common_is_reviewing">info sertivikasi (tunggu audit)</string>
+    <string name="common_retry">mencoba kembali</string>
+    <string name="common_open">buka</string>
+    <string name="common_ok">ya</string>
+    <string name="common_save">simpan</string>
+    <string name="common_confirm">konfirmasi</string>
+    <string name="common_submit">menyerahkan</string>
+    <string name="common_cancel">membatalkan</string>
+    <string name="common_goahead">berlangsung</string>
+    <string name="common_nextstep">selanjutnya</string>
+    <string name="common_exit_app_tips">apakah anda yakin ingin keluar APP?</string>
+    <string name="common_exit_app">keluar dari program</string>
+    <string name="common_last_update">update terahir</string>
+    <string name="common_server_error">server rusak</string>
+    <string name="common_pull_down_to_refresh">penyegaran dropdown</string>
+    <string name="common_loading">loading...</string>
+    <string name="common_refresh_time">penyegaran waktu:</string>
+    <string name="common_last_refresh_time">terahir penyegaran:</string>
+    <string name="common_loosen_to_refresh">rilis penyegaran</string>
+    <string name="common_refreshing">segar</string>
+    <string name="common_this_refresh_time">kali ini penyegaran:</string>
+    <string name="common_exit">tekan lagi untuk berhenti</string>
+    <string name="common_upload">meng-upload tunggu</string>
+    <string name="investigateactitivy_investigate_read">baca</string>
+
+    <!-- 版本更新 -->
+    <string name="update_app_update_tip">Update tip</string>
+    <string name="update_app_tips">adalah versi informasi baru, tolong tunggu</string>
+    <string name="update_app_found_version">ditemukan versi baru:</string>
+    <string name="update_app_is_update">apakah akan memperbarui?</string>
+    <string name="update_app_update">pemberitahuan</string>
+    <string name="update_app_temporarily_not_update">tidak ada pemberitahuan</string>
+    <string name="update_app_latest_version">adalah versi baru</string>
+    <string name="downloadService_server_nohave">file server tidak ada ,download gagal</string>
+    <string name="downloadService_server_error">koneksi server gagal, cobalah nanti.</string>
+    <string name="downloadService_server_fail">Unable to get new version information! </string>
+    <string name="downloadService_jiancha">periksa pemberitahuan</string>
+    <string name="downloadService_zzxz">download</string>
+    <string name="common_update_app">sedang upgrade , tunggu</string>
+    <string name="update_app_update_tips_qz">menemukan versi baru,perlu meng-upgrade detelah digunakan.WIFI direkomendasikan peningkatan upgrade apakah sekarang?</string>
+    <string name="update_app_update_tips">menemukan versi baru,perlu meng-upgrade detelah digunakan.WIFI direkomendasikan peningkatan upgrade apakah sekarang?</string>
+    <string name="update_app_update_tips_googleplay">versi terbaru ini tidak lagi didukung, silakan unistall google bermain setelah mendownload versi baru!</string>
+
+    <!-- 设置 -->
+    <string name="settings_about">tentang</string>
+    <string name="settings_title">pengaturan</string>
+    <string name="settings_help">gunakan bantuan</string>
+    <string name="settings_log_out">beralih penggunaan</string>
+    <string name="settings_check_the_update">periksa pemberitahuan</string>
+    <string name="settings_exit_tips">apakah anda yakin ingin keluar akun saat ini?</string>
+
+    <!-- 加载页 -->
+    <string name="loading_page_content">pemuatan</string>
+
+    <!-- 无数据 -->
+    <string name="net_error">kesalahan koneksi jaringan</string>
+    <string name="click_refresh">klik refres</string>
+    <string name="no_data_page_content">sementara tidak ada data</string>
+    <string name="no_content">sementara tidak ada data</string>
+    <string name="no_shop_content">sementara tidak ada data</string>
+    <!-- 选择所在区域 -->
+    <string name="select_area">pilih daerah</string>
+    <!-- 提示框标题 -->
+    <string name="showAlerttitle_Information">informasi</string>
+    <string name="showAlerttitle_warning">peringatan</string>
+    <string name="showAlerttitle_error">kerusakan</string>
+
+    <!-- payfort -->
+    <string name="payfort_tips">setelah pembayaran selesai klik tombol ini bada situasi yang anda bayar</string>
+    <string name="payfort_error">masalah pembayaran</string>
+    <string name="payfort_sc">penyelesaian pembayaran</string>
+    <string name="payfort_order_acc">pembayaran telah diterima</string>
+    <string name="payfort_order_not_acc">pembayaran tidak di terima</string>
+
+    <!--sd-->
+    <string name="nstall_sd">silahkan instal kartu SD</string>
+
+    <string name="tip_save_image_suc">Picture has been saved (cell phone photo album) </string>
+
+    <string name="copy_to_clipboard">Copy to clipboard</string>
+    <string name="copy_image_link">Copy image link</string>
+</resources>

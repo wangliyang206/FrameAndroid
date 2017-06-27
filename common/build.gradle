@@ -1,0 +1,88 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    //Android依赖包
+    compile ("com.android.support:support-v4:$rootProject.supportLibraryVersion")
+    compile ("com.android.support:appcompat-v7:$rootProject.supportLibraryVersion")
+    compile ("com.android.support:support-annotations:$rootProject.supportLibraryVersion")
+
+    //Jude95/EasyRecyclerView控件(RecyclerView是ListView和GridView的豪华增强版)(https://github.com/Jude95/EasyRecyclerView)
+    compile "com.jude:easyrecyclerview:$rootProject.ext.easyRecyclerViewVersion"
+
+    //json解析
+    compile "com.google.code.gson:gson:$rootProject.gsonVersion"
+    compile "com.alibaba:fastjson:$rootProject.fastjsonVersion"
+
+    //MultiDex分包
+    compile "com.android.support:multidex:$rootProject.multiDexVersion"
+    androidTestCompile("com.android.support:multidex-instrumentation:$rootProject.multiDexVersion") {
+        exclude group: 'com.android.support', module: 'multidex'
+    }
+
+    //图片加载
+    compile ("com.github.bumptech.glide:glide:$rootProject.glideVersion")
+//    compile ("com.squareup.picasso:picasso:$rootProject.picassoVersion")
+    //或使用下面这个
+//    compile "com.facebook.fresco:fresco:$rootProject.frescoVersion"
+
+    //添加timber日志跟踪
+    compile "com.jakewharton.timber:timber:$rootProject.ext.timberVersion"
+
+    //事件总线EventBus
+    compile "org.greenrobot:eventbus:$rootProject.eventbusVersion"
+
+    //二维码
+    compile "com.google.zxing:core:$rootProject.zxingVersion"
+
+    //添加butterknife支持
+    compile "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
+    apt "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
+
+    //网络请求
+    compile "com.loopj.android:android-async-http:$rootProject.asynchttpVersion"
+
+    //缓存
+    compile "com.jakewharton:disklrucache:$rootProject.disklrucacheVersion"
+
+    //添加retrofit2支持
+    compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava:$rootProject.ext.retrofitVersion"
+
+    compile "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.loggingVersion"
+    compile "com.squareup.okhttp3:okhttp:$rootProject.ext.loggingVersion"
+
+    //添加dagger2支持
+    apt "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+    compile "com.google.dagger:dagger:$rootProject.ext.daggerVersion"
+
+    //Rxjava和RxAndroid支持
+    compile "io.reactivex:rxjava:$rootProject.ext.rxjavaVersion"
+    compile "io.reactivex:rxandroid:$rootProject.ext.rxandroidVersion"
+
+    //一个圆形的ImageView for Android(https://github.com/hdodenhof/CircleImageView)
+    compile "de.hdodenhof:circleimageview:$rootProject.ext.circleimageviewVersion"
+}

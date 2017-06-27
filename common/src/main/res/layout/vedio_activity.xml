@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 视频播放器 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rel_news_firstlayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_top_height"
+        android:background="@drawable/common_top_bg" >
+
+        <TextView
+            android:id="@+id/txtvi_news_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_top_height"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="0dp"
+            android:gravity="center"
+            android:paddingRight="10dp"
+            android:text="正在播放"
+            android:textColor="@color/white_color"
+            android:textSize="@dimen/common_top_title_textsize" />
+
+        <ImageView
+            android:id="@+id/imgvi_news_vedio_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignLeft="@+id/txtvi_news_header"
+            android:layout_centerVertical="true"
+            android:background="@drawable/common_image_selector"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/common_header_back" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <!-- 视频窗口 -->
+
+        <SurfaceView
+            android:id="@+id/suvi_news_play"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@+id/linear_news_play_bottom" />
+
+        <!-- 进度条 -->
+
+        <LinearLayout
+            android:id="@+id/linear_news_play_bottom"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:background="#000000"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/imgvi_news_video_play"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/common_image_selector"
+                android:src="@drawable/layvi_news_music_play" />
+
+            <TextView
+                android:id="@+id/txtvi_news_play_playtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textColor="@color/normal_text_whitecolor" />
+
+            <SeekBar
+                android:id="@+id/sk_news_play_seekbar"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:progressDrawable="@drawable/common_media_seekbar_img"
+                android:thumb="@drawable/media_player_progress_button" />
+
+            <TextView
+                android:id="@+id/txtvi_news_play_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textColor="@color/normal_text_whitecolor" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

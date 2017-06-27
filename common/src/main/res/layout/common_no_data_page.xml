@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white_color"
+    android:gravity="center" >
+
+    <TextView
+        android:id="@+id/txtvi_commonnodatapage_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_data_page_content"
+        android:textSize="@dimen/no_data_page_text_size"
+        android:textStyle="bold" />
+
+</LinearLayout>

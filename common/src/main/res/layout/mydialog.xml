@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+     android:background="@color/white_color"
+    android:gravity="center" >
+
+    
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/imageView_background_mydialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/information" />
+
+            <TextView
+                android:id="@+id/textView_title_mydialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dip"
+                android:text="title"
+                android:textColor="@color/black_color"
+                android:textSize="22dp" >
+            </TextView>
+        </LinearLayout>
+        <!-- Line 1 -->
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/red_color" />
+
+        <!-- Line 2 -->
+
+        <TextView
+            android:id="@+id/textView_mydialog"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="30dip"
+            android:gravity="center_vertical|left"
+            android:text="HELLO WORLD"
+            android:textColor="@color/black_color"
+            android:textSize="15dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#969696" />
+        <!-- Line 3 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/button_okName"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:text="OK" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#969696" />
+
+            <Button
+                android:id="@+id/button_cancelName"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:text="CANCEL" />
+        </LinearLayout>
+
+</LinearLayout>

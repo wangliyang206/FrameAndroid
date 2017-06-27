@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="common_error_data">خطأ في البيانات</string>
+    <string name="scan_text">ضع QR code في داخل الإطار للمسح التلقائي</string>
+    <string name="select_scan">اختر QR code/Bar code</string>
+    <string name="picture_error">شكل الصورة خطأ</string>
+    <string name="qr_code">QR code</string>
+    <!-- 通用部分 -->
+
+    <string name="common_no">لا </string>
+    <string name="common_yes">نعم </string>
+    <string name="common_check_network">الرجاء التحقق من اتصال الشبكة</string>
+    <string name="common_warm_prompt">معلومات</string>
+    <string name="common_approved">معلومات الشهادة الخاصة بي (موافق عليه)</string>
+    <string name="common_audit_failure">معلومات الشهادة الخاصة بي (لم تنجح في التدقيق)</string>
+    <string name="common_is_reviewing">معلومات الشهادة الخاصة بي (تحت المراجعة)</string>
+    <string name="common_retry">أعد المحاولة</string>
+    <string name="common_open">افتح</string>
+    <string name="common_ok">نعم</string>
+    <string name="common_save">حفظ</string>
+    <string name="common_submit">حفظ</string>
+    <string name="common_confirm">تأكيد</string>
+    <string name="common_cancel">ألغاء</string>
+    <string name="common_goahead">#تواصل</string>
+    <string name="common_nextstep">#الخطوة التالية</string>
+    <string name="common_exit_app">خروج</string> <!-- * -->
+    <string name="common_server_error">خطأ في الوصول إلي الخادم</string>
+    <string name="common_last_update">آخر تحديث</string>
+    <string name="common_pull_down_to_refresh">اسحب للتحديث...</string>
+    <string name="common_loading">تحميل...</string>
+    <string name="common_refresh_time">وقت التحديث:</string>
+    <string name="common_last_refresh_time">آخر تحديث:</string>
+    <string name="common_loosen_to_refresh">حرر للتحديث...</string>
+    <string name="common_refreshing">يتم التحديث الآن</string>
+    <string name="common_this_refresh_time">وقت التحديث:</string>
+    <string name="common_exit">ضغط مرة أخرى للخروج</string>
+    <string name="investigateactitivy_investigate_read">#تم قراءة</string>
+    <string name="common_exit_app_tips">هل أنت متأكد أنك تريد إنهاء التطبيق؟</string> <!-- * -->
+    <string name="common_reset">إعادة تعيين</string>
+    <string name="common_update">تحديث</string>
+
+    <string name="tips_phone_format_error">خطأ تهيئة الهاتف </string>
+
+    <!-- 版本更新 -->
+    <string name="update_app_tips">يتم الحصول على إصدار جديد، يرجى الانتظار ...</string>
+    <string name="update_app_update_tip">تلميحات التحديث</string>
+    <string name="update_app_found_version">تم العثور على نسخة جديدة:</string>
+    <string name="update_app_is_update">هل تريد التحديث؟</string>
+    <string name="update_app_update">تحديث</string>
+    <string name="update_app_temporarily_not_update">لا يوجد تحديثات</string>
+    <string name="update_app_latest_version">لديك أحدث إصدار!</string>
+    <string name="downloadService_server_nohave">الملفات غير موجودة في الخادم، فشلت عملية التحميل!</string>
+    <string name="downloadService_server_fail">غير قادر على الحصول على نسخة جديدة من المعلومات! </string>
+    <string name="downloadService_server_error">فشلة عملية التوصيل بالخادم، الرجاء المحاولة من جديد</string>
+    <string name="downloadService_jiancha">تحقق من وجود تحديثات</string>
+    <string name="downloadService_zzxz">يتم التنزيل:</string>
+    <string name="common_update_app">يتم التحديث.....</string>
+    <string name="update_app_update_tips_qz">تم العثور على نسخة جديدة، أنت تحتاج إلي التحديث للاستخدام، نوصي باستخدام الواي فاي للتحديث، هل تريد التحديث الآن؟</string>
+    <string name="update_app_update_tips">تم العثور على نسخة جديدة، أنت تحتاج إلي التحديث للاستخدام، نوصي باستخدام الواي فاي للتحديث، هل تريد التحديث الآن؟</string>
+    <string name="update_app_update_tips_googleplay">لم يعد هذا الإصدار المحدث، يرجى إلغاء تثبيت برنامج Google لعب بعد تحميل أحدث إصدار!</string>
+
+    <!-- 设置 -->
+    <string name="settings_about">حول</string>
+    <string name="settings_title">#إعدادات</string>
+    <string name="settings_help">Use the help</string>
+    <string name="settings_log_out">#تبديل المستخدم </string>
+    <string name="settings_check_the_update">تحقق من وجود تحديثات</string>
+    <string name="settings_exit_tips">هل متأكد من تسجيل الخروج؟</string>
+
+    <!-- 加载页 -->
+    <string name="loading_page_content">تحميل...</string>
+
+    <!-- 无数据 -->
+    <string name="net_error">خطأ في الاتصال بالشبكة</string>
+    <string name="click_refresh">انقر للتحديث</string>
+    <string name="no_data_page_content">مؤقتا لا توجد بيانات</string>
+    <string name="no_content">مؤقتا لا توجد بيانات</string>
+    <string name="no_shop_content">مؤقتا لا توجد بيانات</string>
+    <!-- 选择所在区域 -->
+    <string name="select_area">اختر المنطقة</string>
+    <!-- 提示框标题 -->
+    <string name="showAlerttitle_Information">معلومات</string>
+    <string name="showAlerttitle_warning">تحذير</string>
+    <string name="showAlerttitle_error">خطأ</string>
+
+    <!-- payfort -->
+    <string name="payfort_tips">بعد نجاح عملية الدفع، الرجاء النقر على الزر التالي  حسب طريقة الدفع الخاصة بك</string>
+    <string name="payfort_error">مشاكل الدفع</string>
+    <string name="payfort_sc">تم الانتهاء من دفع المبلغ</string>
+    <string name="payfort_order_acc">تم قبول عملية الدفع</string>
+    <string name="payfort_order_not_acc">لم يتم قبول عملية الدفع</string>
+
+    <!-- 图片选择器 -->
+    <string name="select_mode">طريقة اختيار</string>
+    <string name="mode_single">خيار واحد</string>
+    <string name="mode_multi">اختيار متعدد</string>
+    <string name="max_select_amount">ماكس المبلغ المحدد</string>
+    <string name="hint_default_amount">المبلغ الافتراضي هو 9</string>
+    <string name="enable_camera">تمكين الكاميرا</string>
+    <string name="enable">تمكين</string>
+    <string name="disable">تعطيل</string>
+    <string name="go_select">حدد</string>
+    <string name="folder_all">جميع الصور</string>
+    <string name="preview">معاينة</string>
+    <string name="msg_no_camera">لا يوجد نظام الكاميرا</string>
+    <string name="msg_amount_limit">اختيار الصور المبلغ المحدد</string>
+    <string name="action_done">حرر</string>
+    <string name="photo_unit">شوت</string>
+    <string name="tip_take_photo">خذ الصورة</string>
+    <string name="del_photo">هل أنت متأكد من أنك تريد إزالة الصورة المختارة حالياً؟</string>
+
+    <!--sd-->
+    <string name="nstall_sd">الرجاء تثبيت  بطاقة  التنمية المستدامة </string>
+
+    <string name="tip_save_image_suc">الصور  المحفوظة  (  ألبوم الهاتف  ) </string>
+
+    <string name="copy_to_clipboard">وقد  نسخ إلى الحافظة </string>
+    <string name="copy_image_link">نسخ رابط الصورة </string>
+</resources>

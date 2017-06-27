@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="common_error_data">Data Error</string>
+    <string name="scan_text">Put QR code within the box</string>
+    <string name="select_scan">chose QR code/Bar code</string>
+    <string name="picture_error">Image Format Error</string>
+    <string name="qr_code">QR code</string>
+    <!-- 通用部分 -->
+
+    <string name="common_no">No</string>
+    <string name="common_yes">Yes</string>
+    <string name="common_check_network">Please check the network</string>
+    <string name="common_warm_prompt">Warm prompt</string>
+    <string name="common_approved">My certification info(Approved)</string>
+    <string name="common_audit_failure">My certification info(Audit failure)</string>
+    <string name="common_is_reviewing">My certification info(Wait Audit)</string>
+    <string name="common_retry">Retry</string>
+    <string name="common_open">Open</string>
+    <string name="common_ok">Ok</string>
+    <string name="common_save">Save</string>
+    <string name="common_confirm">Confirm</string>
+    <string name="common_submit">Submit</string>
+    <string name="common_cancel">Cancel</string>
+    <string name="common_goahead">Go on</string>
+    <string name="common_nextstep">Next step</string>
+    <string name="common_exit_app">Exit</string>
+    <string name="common_last_update">The last update</string>
+    <string name="common_server_error">Server ERROR</string>
+    <string name="common_pull_down_to_refresh">The drop down refresh</string>
+    <string name="common_loading">Loading...</string>
+    <string name="common_refresh_time">Refresh time：</string>
+    <string name="common_last_refresh_time">Last refresh time：</string>
+    <string name="common_loosen_to_refresh">Loosen to refresh</string>
+    <string name="common_refreshing">Refreshing...</string>
+    <string name="common_this_refresh_time">This refresh time：</string>
+    <string name="common_exit">Again according to the exit</string>
+    <string name="common_exit_app_tips">Are you sure you want to exit APP?</string>
+    <string name="investigateactitivy_investigate_read">Read</string>
+    <string name="common_reset">Reset</string>
+    <string name="common_update">Update</string>
+
+    <string name="tips_phone_format_error">Phone format error</string>
+
+    <!-- 版本更新 -->
+    <string name="update_app_update_tip">Update tip</string>
+    <string name="update_app_tips">Is for the new version information, please wait...</string>
+    <string name="update_app_found_version">Found the new version：</string>
+    <string name="update_app_is_update">Whether to update?</string>
+    <string name="update_app_update">Update</string>
+    <string name="update_app_temporarily_not_update">No update</string>
+    <string name="update_app_latest_version">Is the latest version!</string>
+    <string name="downloadService_server_nohave">The server file does not exist, download fail！</string>
+    <string name="downloadService_server_fail">Unable to get new version information! </string>
+    <string name="downloadService_server_error">Server connection failed, please try again later！</string>
+    <string name="downloadService_jiancha">Check the update</string>
+    <string name="downloadService_zzxz">Downloading：</string>
+    <string name="common_update_app">upgrading……</string>
+    <string name="update_app_update_tips_qz">Found a new version, need to upgrade after use. Recommended in the WiFi upgrade, and now whether to upgrade?</string>
+    <string name="update_app_update_tips">Found a new version, please upgrade after use. Recommended in the WiFi upgrade, and now whether to upgrade?</string>
+    <string name="update_app_update_tips_googleplay">This updated version is no longer supported, please uninstall Google play after downloading the latest version!</string>
+
+    <!-- 设置 -->
+    <string name="settings_about">About</string>
+    <string name="settings_title">Settings</string>
+    <string name="settings_help">Use the help</string>
+    <string name="settings_log_out">Switch the user</string>
+    <string name="settings_check_the_update">Check the update</string>
+    <string name="settings_exit_tips">Are you sure you want to exit the current account?</string>
+
+    <!-- 加载页 -->
+    <string name="loading_page_content">Loading...</string>
+
+    <!-- 无数据 -->
+    <string name="net_error">Network connection error</string>
+    <string name="click_refresh">Click the refresh</string>
+    <string name="no_data_page_content">Temporarily no data</string>
+    <string name="no_content">Temporarily no data</string>
+    <string name="no_shop_content">Temporarily no data</string>
+    <!-- 选择所在区域 -->
+    <string name="select_area">Select Area</string>
+    <!-- 提示框标题 -->
+    <string name="showAlerttitle_Information">Information</string>
+    <string name="showAlerttitle_warning">Warning</string>
+    <string name="showAlerttitle_error">Error</string>
+
+    <!-- payfort -->
+    <string name="payfort_tips">After the payment is completed, please click the following button on the situation you pay.</string>
+    <string name="payfort_error">Payment problems</string>
+    <string name="payfort_sc">Payment completion</string>
+	<string name="payfort_order_acc">Payment orders have been accepted</string>
+    <string name="payfort_order_not_acc">Payment orders are not accepted</string>
+    
+    <!-- 图片选择器 -->
+    <string name="action_settings">Settings</string>
+    <string name="select_mode">Select Mode</string>
+    <string name="mode_single">Single-Choice</string>
+    <string name="mode_multi">Multi-Choice</string>
+    <string name="max_select_amount">Max Selected Amount</string>
+    <string name="hint_default_amount">default amount is 9</string>
+    <string name="enable_camera">Enable Camera</string>
+    <string name="enable">Enable</string>
+    <string name="disable">Disable</string>
+    <string name="go_select">Select</string>
+
+    <string name="del_photo">Are you sure you want to remove the currently selected picture?</string>
+
+    <string name="mis_folder_all">All Images</string>
+    <string name="mis_preview">Preview</string>
+    <string name="mis_msg_no_camera">No system camera found</string>
+    <string name="mis_msg_amount_limit">Select images amount is limit</string>
+    <string name="mis_action_done">Done</string>
+    <string name="mis_action_button_string">%1$s(%2$d/%3$d)</string>
+    <string name="mis_photo_unit">Shot</string>
+    <string name="mis_tip_take_photo">Take photo</string>
+    <string name="mis_error_image_not_exist">Image error</string>
+    <string name="mis_error_no_permission">Has no permission</string>
+    <string name="mis_permission_dialog_title">Permission Deny</string>
+    <string name="mis_permission_dialog_ok">OK</string>
+    <string name="mis_permission_dialog_cancel">CANCEL</string>
+    <string name="mis_permission_rationale">Storage read permission is needed to pick files.</string>
+    <string name="mis_permission_rationale_write_storage">Storage write permission is needed to save the image.</string>
+    <!--sd-->
+    <string name="nstall_sd">Please install SD card</string>
+
+    <string name="tip_save_image_suc">Picture has been saved (cell phone photo album) </string>
+
+    <string name="copy_to_clipboard">Copy to clipboard</string>
+    <string name="copy_image_link">Copy image link</string>
+</resources>

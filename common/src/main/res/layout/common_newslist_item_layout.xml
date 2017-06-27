@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TwoLineListItem xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/common_newslist_listitem_bg"
+    android:paddingBottom="8dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="8dp" >
+
+    <ImageView
+        android:id="@+id/imgvi_commonNewsListItemLayout_icon"
+        android:layout_width="@dimen/commonnewslistitemlayout_image_size"
+        android:layout_height="@dimen/commonnewslistitemlayout_image_size"
+        android:scaleType="fitCenter"
+        android:src="@drawable/defaultposter_local" />
+
+    <TextView
+        android:id="@+id/txvi_commonNewsListItemLayout_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@android:id/icon"
+        android:paddingLeft="4dp"
+        android:textColor="@color/commonnewslistitemlayout_textcolor_dark"
+        android:textSize="@dimen/commonnewslistitemlayout_firstline_textsize" />
+
+    <TextView
+        android:id="@+id/txvi_commonNewsListItemLayout_digest"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@android:id/text1"
+        android:layout_below="@android:id/text1"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:gravity="right"
+        android:includeFontPadding="false"
+        android:lines="1"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:textColor="@color/commonnewslistitemlayout_textcolor_gray"
+        android:textSize="@dimen/commonnewslistitemlayout_secondline_textsize" />
+
+</TwoLineListItem>

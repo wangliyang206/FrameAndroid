@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:paddingTop="10dp"
+    android:background="@drawable/dialog_corners_bg"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="15dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/dialog_locate_layout_close_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="0dp"
+            android:src="@drawable/dialog_close_icon" />
+
+        <ImageView
+            android:id="@+id/dialog_locate_layout_loadingicon_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/dialog_loading_icon" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/dialog_locate_layout_content_text_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text=""
+        android:textColor="#646464"
+        android:textSize="20dp" />
+</LinearLayout>

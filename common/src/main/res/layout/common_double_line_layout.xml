@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/common_newslist_listitem_bg"
+    android:orientation="vertical" 
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/txtvi_left_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="33e2e2e"
+        android:textColor="@color/common_double_line_hint_text_color"
+        android:textSize="@dimen/normal_textsize" />
+
+    <TextView
+        android:id="@+id/txtvi_bottom_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtvi_left_text"
+        android:layout_marginLeft="15.0dp"
+        android:text="ewew"
+        android:textColor="@color/common_double_line_clean_history_text_color"
+        android:textSize="@dimen/small_textsize" />
+
+    <!-- 评论、搜索结果 -->
+
+    <TextView
+        android:id="@+id/txtvi_right_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignRight="@+id/txtvi_left_text"
+        android:text="1212121"
+        android:textColor="@color/common_double_line_hint_text_color"
+        android:textSize="@dimen/normal_textsize" />
+
+</RelativeLayout>

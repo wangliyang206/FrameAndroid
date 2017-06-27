@@ -1,0 +1,91 @@
+<resources>
+
+    <!-- ######################################通用###################################### -->
+    <!-- 透明颜色 -->
+    <color name="transparent_color">#00000000</color>
+    <!-- 半透明 -->
+    <color name="translucent_20">#20000000</color>
+    <!-- 半透明 -->
+    <color name="translucent_50">#50000000</color>
+    <!-- 白色 -->
+    <color name="white_color">#ffffff</color>
+    <!-- 红色 -->
+    <color name="red_color">#FF0000</color>
+    <!-- 黑色 -->
+    <color name="black_color">#000000</color>
+    <!-- 亮黑色 -->
+    <color name="bright_black">#323232</color>
+    <!-- 浅黑色 -->
+    <color name="shallow_black_color">#ff46494b</color>
+    <!-- 蓝色 -->
+    <color name="blue_color">#0033cc</color>
+    <!-- 绿色 -->
+    <color name="green_color">#00CC00</color>
+    <!-- 灰白色 -->
+    <color name="gray_white_color">#ebebeb</color>
+    <!-- 轻灰色 -->
+    <color name="grey_color">#a8a5a7</color>
+    <!-- 重灰色的 -->
+    <color name="gray_color">#7c7c7c</color>
+    <!-- 银灰色的 -->
+    <color name="silver_color">#DEE2E5</color>
+
+    <!-- 按下颜色 -->
+    <color name="common_bg_presscolor_lightwhite">#ffdadde0</color>
+    <!-- 获取焦点颜色 -->
+    <color name="common_bg_focuscolor_lightgrey">#ffa6aaac</color>
+
+    <!-- 通用新闻详情 -->
+    <color name="common_image_focus_bak">#a6a6a6</color>
+    <color name="common_image_normal_bak">#00ffffff</color>
+    <color name="button_press_bak">#a6a6a6</color>
+    <color name="button_normal_bak">#ca0000</color>
+    <color name="button_normal_text">#feffff</color>
+
+    <!-- 视频 -->
+
+
+    <!-- 音频 -->
+    <color name="activity_media_bak">#ced3d6</color>
+    <color name="normal_text_whitecolor">#feffff</color>
+    <!-- ######################################特殊###################################### -->
+
+
+    <!-- image栏目 -->
+    <color name="topicimagelayout_text_color_white">#feffff</color>
+    <color name="topicimagelayout_dotmasks_select_red">#ca0000</color>
+    <color name="topicimagelayout_dotmasks_normal_grey">#a8a5a7</color>
+
+    <!-- ElasticScrollView_下拉刷新_字体_颜色 -->
+    <color name="refreshheadlayout_refresh_text_color">#ff75767b</color>
+
+    <!-- 新闻Item.xml -->
+    <color name="commonnewslistitemlayout_textcolor_dark">#353535</color>
+    <color name="commonnewslistitemlayout_textcolor_gray">#7a7a7a</color>
+    <color name="commonnewslistitemlayout_focus_bak">#a6a6a6</color>
+    <color name="commonnewslistitemlayout_normal_bak">#f0f0f0</color>
+
+    <!-- 网络连接错误 -->
+    <color name="network_text_color">#ff46494b</color>
+    <color name="network_refresh_text_color">#ffc62014</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="scancode">#46D26A</color>
+
+    <!-- 双行 -->
+    <color name="common_double_line_hint_text_color">#ff75767b</color>
+    <color name="common_double_line_clean_history_text_color">#ff222222</color>
+
+    <!-- 设置 -->
+    <color name="settings_item_bg_color">#ffe8ebee</color>
+    <color name="order_item_bg_color">#e3e3e3</color>
+    <color name="persontext_color">#333333</color>
+
+    <color name="day_layout_bg_pressed">#dfdfdf</color>
+    <color name="day_layout_bg_normal">#f6f6f6</color>
+    <color name="day_edit_color">#333333</color>
+
+    <!--图片选择器(MultiImageSelectorActivity)-->
+    <color name="mis_actionbar_color">#21282C</color>
+</resources>

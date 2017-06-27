@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/common_top_height"
+    android:background="#567fd8" >
+
+    <TextView
+        android:id="@+id/txtvi_news_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_top_height"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="0dp"
+        android:gravity="center"
+        android:paddingRight="10dp"
+        android:text=""
+        android:textColor="@color/white_color"
+        android:textSize="@dimen/title_textsize"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imgvi_news_back"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignLeft="@+id/txtvi_news_header"
+        android:layout_centerVertical="true"
+        android:background="@drawable/common_image_selector"
+        android:paddingBottom="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="5dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/comm_back_icon" />
+
+    <ImageView
+        android:id="@+id/mo_scanner_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="14dp"
+        android:padding="5dp"
+        android:src="@drawable/xiangce" />
+
+</RelativeLayout>
