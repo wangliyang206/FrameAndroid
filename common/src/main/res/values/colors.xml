@@ -42,9 +42,6 @@
     <color name="button_normal_bak">#ca0000</color>
     <color name="button_normal_text">#feffff</color>
 
-    <!-- 视频 -->
-
-
     <!-- 音频 -->
     <color name="activity_media_bak">#ced3d6</color>
     <color name="normal_text_whitecolor">#feffff</color>
