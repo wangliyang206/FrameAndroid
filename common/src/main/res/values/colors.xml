@@ -85,4 +85,7 @@
 
     <!--图片选择器(MultiImageSelectorActivity)-->
     <color name="mis_actionbar_color">#21282C</color>
+
+    <color name="white_alpha_16">#10ffffff</color>
+    <color name="white_alpha_240">#f0ffffff</color>
 </resources>

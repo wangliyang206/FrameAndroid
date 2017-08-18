@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.util.Util;
 
 import org.greenrobot.eventbus.EventBus;
@@ -29,6 +30,7 @@ public abstract class BaseActivity extends AppCompatActivity { //AppCompatActivi
     public static Map<String, BaseActivity> cacheActivitys = new HashMap<String, BaseActivity>();
     public static BaseActivity activeAcitity;
 
+    private RequestManager mImgLoader;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -308,5 +310,16 @@ public abstract class BaseActivity extends AppCompatActivity { //AppCompatActivi
         if (activeAcitity != null) {
             activeAcitity.finish();
         }
+    }
+
+    /**
+     * 获取一个图片加载管理器
+     *
+     * @return RequestManager
+     */
+    public synchronized RequestManager getImgLoader() {
+        if (mImgLoader == null)
+            mImgLoader = Glide.with(this);
+        return mImgLoader;
     }
 }

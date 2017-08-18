@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.util.Util;
 import com.cj.mobile.common.ui.swipeback.SwipeBackActivityBase;
 import com.cj.mobile.common.ui.swipeback.SwipeBackActivityHelper;
@@ -36,7 +37,7 @@ public abstract class BaseBackActivity extends AppCompatActivity implements Swip
     public static BaseBackActivity activeAcitity;
 
     private SwipeBackActivityHelper mHelper;
-
+    private RequestManager mImgLoader;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -289,6 +290,16 @@ public abstract class BaseBackActivity extends AppCompatActivity implements Swip
 
     }
 
+    /**
+     * 获取一个图片加载管理器
+     *
+     * @return RequestManager
+     */
+    public synchronized RequestManager getImgLoader() {
+        if (mImgLoader == null)
+            mImgLoader = Glide.with(this);
+        return mImgLoader;
+    }
 
     public static boolean hasActivieActivity() {
         return activeAcitity != null;

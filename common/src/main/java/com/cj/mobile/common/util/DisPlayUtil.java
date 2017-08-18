@@ -1,6 +1,7 @@
 package com.cj.mobile.common.util;
 
 import android.content.Context;
+import android.util.TypedValue;
 
 /*
 dp(dip): device independent pixels(设备独立像素). 不同设备有不同的显示效果,这个和设备硬件有关，一般我们为了支持WVGA、HVGA和QVGA 推荐使用这个，不依赖像素。
@@ -38,6 +39,10 @@ public class DisPlayUtil {
     public static int dip2px(Context context, float dipValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dipValue * scale + 0.5f);
+    }
+
+    public static int dipToPX(final Context ctx, float dip) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dip, ctx.getResources().getDisplayMetrics());
     }
 
     /**

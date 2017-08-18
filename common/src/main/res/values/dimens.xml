@@ -59,4 +59,7 @@
     <dimen name="mis_image_size">120dp</dimen>
     <dimen name="mis_space_size">2dp</dimen>
     <dimen name="mis_folder_cover_size">72dp</dimen>
+
+    <dimen name="g_loading_maxSize">40dp</dimen>
+    <dimen name="g_loading_minSize">28dp</dimen>
 </resources>

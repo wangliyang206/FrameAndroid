@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.cj.mobile.common.ui.ImagePreviewView
+        android:id="@+id/iv_preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
+
+    <com.cj.mobile.common.ui.Loading
+        android:id="@+id/loading"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center"
+        app:gBackgroundColor="@color/white_alpha_16"
+        app:gForegroundColor="@color/white_alpha_240"
+        app:gForegroundLineSize="1dp" />
+
+    <ImageView
+        android:id="@+id/iv_default"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_gravity="center"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_preview_split_graph"
+        android:visibility="gone" />
+</FrameLayout>

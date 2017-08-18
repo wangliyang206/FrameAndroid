@@ -85,4 +85,6 @@ dependencies {
 
     //一个圆形的ImageView for Android(https://github.com/hdodenhof/CircleImageView)
     compile "de.hdodenhof:circleimageview:$rootProject.ext.circleimageviewVersion"
+
+    compile 'pub.devrel:easypermissions:0.3.0'
 }

@@ -112,7 +112,7 @@ public class DateFormatUtils {
 	}
 
 	/**
-	 * 描述：判断是否是闰年()
+	 * 描述：判断是否是闰年
 	 * <p>
 	 * (year能被4整除 并且 不能被100整除) 或者 year能被400整除,则该年为闰年.
 	 * 
@@ -129,7 +129,7 @@ public class DateFormatUtils {
 	}
 
 	/**
-	 * 计算两个时间之间相差的天数
+	 * 计算两个时间之间相差的天数(计算天数差)
 	 * 
 	 * @param startDate
 	 * @param endDate
@@ -142,6 +142,24 @@ public class DateFormatUtils {
 		// 一天的毫秒数1000 * 60 * 60 * 24=86400000
 		days = (end - start) / 86400000;
 		return days;
+	}
+
+	/** 计算两个时间之间相差的时数(计算小时差) */
+	public static long diffHours(Date startDate, Date endDate){
+		int hours = 0;
+		long start = startDate.getTime();
+		long end = endDate.getTime();
+		hours = (int) ((end - start)/(1000 * 60 * 60));
+		return hours;
+	}
+
+	/** 计算两个时间之间相差的分钟数(计算分钟差) */
+	public static long diffMinutes (Date startDate, Date endDate){
+		int minutes  = 0;
+		long start = startDate.getTime();
+		long end = endDate.getTime();
+		minutes  = (int) ((end - start)/(1000 * 60));
+		return minutes ;
 	}
 
 	/**
@@ -282,4 +300,74 @@ public class DateFormatUtils {
         }
         return "1970-01-01";
     }
+
+	/**
+	 * 字符串转时间戳
+	 * @param dateString    字符串类型(String,例：2015-06-24 16:33:47)
+	 * @param pattern       模式(例如：yyyy-MM-dd HH:mm:ss或yyyyMMdd HHmmss)
+	 * @return				long型时间戳
+	 */
+	public static long strToLong(String dateString, String pattern){
+		Date date = null;
+		try {
+			DateFormat dateFormat = new SimpleDateFormat(pattern);
+			date = dateFormat.parse(dateString);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return date.getTime();
+	}
+
+	/** 时间戳转天、小时、分钟、秒 */
+	public static String[] formatTimer(long sec) {
+		String[] s = new String[4];
+		long days = sec / (60 * 60 * 24);
+		long hours = (sec % (60 * 60 * 24)) / (60 * 60);
+		long minutes = (sec % (60 * 60)) / (60);
+		long seconds = (sec % (60));
+		if (days<10){
+			s[0] = "0"+days;
+		}else{
+			if (days>99){
+				s[0] = 99+"";
+			}else{
+				s[0] = days+"";
+			}
+		}
+		if (hours<10){
+			s[1] = "0"+hours;
+		}else{
+			s[1] = hours+"";
+		}
+		if (minutes<10){
+			s[2] = "0"+minutes;
+		}else{
+			s[2] = minutes+"";
+		}
+		if (seconds<10){
+			s[3] = "0"+seconds;
+		}else{
+			s[3] = seconds+"";
+		}
+		return s;
+//        return seconds+"秒/"+minutes + "分钟/"+ hours + "小时/"+days + "天";
+	}
+
+	/** 计算时间差 */
+	public static long timeDifference(String nowtime, String endtime,String pattern) {
+		SimpleDateFormat format = new SimpleDateFormat(pattern);
+		long diff = 0;
+		try {
+			//系统时间转化为Date形式
+			Date dstart = format.parse(nowtime);
+			//活动结束时间转化为Date形式
+			Date dend = format.parse(endtime);
+			//算出时间差，用ms表示
+			diff = dend.getTime() - dstart.getTime();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		//返回时间差
+		return diff;
+	}
 }

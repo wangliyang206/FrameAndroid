@@ -798,4 +798,53 @@ public class FileUtil {
         }
         return true;
     }
+
+    public static void deleteCacheFile(String f) {
+        if (f != null && f.length() > 0) {
+            File files = new File(f);
+            if (files.exists() && files.isDirectory()) {
+                for (File file : files.listFiles()) {
+                    if (!file.isDirectory() && (file.getName().contains(".ts") || file.getName().contains("temp"))) {
+                        file.delete();
+                    }
+
+                }
+            }
+        }
+    }
+    public static void deleteCacheFile2TS(String f) {
+        if (f != null && f.length() > 0) {
+            File files = new File(f);
+            if (files.exists() && files.isDirectory()) {
+                for (File file : files.listFiles()) {
+                    if (!file.isDirectory() && (file.getName().contains(".ts"))) {
+                        file.delete();
+                    }
+
+                }
+            }
+        }
+    }
+
+    /**
+     * 检测文件是否可用
+     */
+    public static boolean checkFile(File f) {
+        if (f != null && f.exists() && f.canRead() && (f.isDirectory() || (f.isFile() && f.length() > 0))) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 检测文件是否可用
+     */
+    public static boolean checkFile(String path) {
+        if (!Validate.isEmpty(path)) {
+            File f = new File(path);
+            if (f != null && f.exists() && f.canRead() && (f.isDirectory() || (f.isFile() && f.length() > 0)))
+                return true;
+        }
+        return false;
+    }
 }

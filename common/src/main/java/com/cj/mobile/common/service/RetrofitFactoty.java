@@ -1,10 +1,13 @@
 package com.cj.mobile.common.service;
 
+import java.util.concurrent.TimeUnit;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import timber.log.Timber;
 
 /**
  * 服务端接口工厂类
@@ -22,9 +25,38 @@ public class RetrofitFactoty {
      * Creates a retrofit service from an arbitrary class (clazz)
      */
     public static Retrofit createRetrofitService() {
+        /** 拦截器  给所有的请求添加消息头 */
+//        Interceptor mInterceptor = new Interceptor() {
+//            @Override
+//            public okhttp3.Response intercept(Interceptor.Chain chain) throws IOException {
+//                Request request = chain.request()
+//                        .newBuilder()
+//                        .addHeader("Accept-Encoding", "gzip, deflate")
+//                        .build();
+//                return chain.proceed(request);
+//            }
+//        };
+
+        /** log拦截器  打印所有的 log */
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
+            @Override
+            public void log(String message) {
+                Timber.i(message);
+            }
+        });
+        /*NONE,       //不打印log
+        BASIC,      //只打印 请求首行 和 响应首行
+        HEADERS,    //打印请求和响应的所有 Header
+        BODY        //所有数据全部打印*/
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .addInterceptor(new HttpLoggingInterceptor())//添加消息拦截
+                .connectTimeout(40, TimeUnit.SECONDS)       //请求超时
+                .writeTimeout(30, TimeUnit.SECONDS)         //写入超时
+                .readTimeout(30, TimeUnit.SECONDS)          //读取超时
+//                .addInterceptor(mInterceptor)               //添加自定义拦截
+                .addInterceptor(interceptor)                //添加消息（log）拦截
+//                .addNetworkInterceptor(new GzipRequestInterceptor())    //GZIP数据压缩
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()

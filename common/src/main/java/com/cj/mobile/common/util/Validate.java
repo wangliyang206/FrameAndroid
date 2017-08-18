@@ -60,7 +60,7 @@ public class Validate {
      * @return true or false
      */
     public static boolean isEmpty(String str) {
-        return str == null || str.trim().length() == 0;
+        return str == null || str.trim().length() == 0 || str.equalsIgnoreCase("null");
     }
 
     /**
@@ -104,7 +104,11 @@ public class Validate {
      * @return
      */
     public static String isEmptyReturnStr(CharSequence cs) {
-        return (String) ((cs != null && cs.length() > 0) ? cs : "");
+        if(cs == null || cs.length() == 0){
+            return "";
+        }
+        String val = cs.toString();
+        return ((val != null && val.length() > 0 && (!val.equalsIgnoreCase("null"))) ? val : "");
     }
 
     /**
@@ -158,5 +162,23 @@ public class Validate {
      */
     public static boolean isEmptyOrStrEmpty(Object obj) {
         return obj == null || obj.toString().length() == 0;
+    }
+
+    /**
+     * Helper function for making null strings safe for comparisons, etc.
+     *
+     * @return (s == null) ? "" : s;
+     */
+    public static String makeSafe(String s) {
+        return (s == null) ? "" : s;
+    }
+
+    /**
+     *
+     * @param str
+     * @return
+     */
+    public static String trim(String str) {
+        return str == null ? "" : str.trim();
     }
 }

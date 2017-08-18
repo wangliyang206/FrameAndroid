@@ -28,7 +28,7 @@ public class AppUpdate implements Serializable {
     /**
      * 文件名称(cm.apk)
      */
-    private String file;
+    private String fileName;
     /**
      * 文件下载地址(http://www.21chinamall.com/download/cm.apk)
      */
@@ -74,14 +74,6 @@ public class AppUpdate implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getFile() {
-        return file;
-    }
-
-    public void setFile(String file) {
-        this.file = file;
     }
 
     public int getForce() {
@@ -148,6 +140,14 @@ public class AppUpdate implements Serializable {
         this.filePath = filePath;
     }
 
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
     @Override
     public String toString() {
         return "AppUpdate{" +
@@ -155,7 +155,7 @@ public class AppUpdate implements Serializable {
                 ", verCode=" + verCode +
                 ", verName='" + verName + '\'' +
                 ", name='" + name + '\'' +
-                ", file='" + file + '\'' +
+                ", fileName='" + fileName + '\'' +
                 ", filePath='" + filePath + '\'' +
                 ", force=" + force +
                 ", downloadid=" + downloadid +

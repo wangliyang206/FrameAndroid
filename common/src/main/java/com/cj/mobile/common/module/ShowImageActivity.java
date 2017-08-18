@@ -65,10 +65,10 @@ public class ShowImageActivity extends Activity {
 
     @Override
     protected void onDestroy() {
+        Glide.with(this).onDestroy();
         if (mImageViews != null) {
             mImageViews = null;
         }
-        Glide.with(this).onDestroy();
         super.onDestroy();
     }
 
