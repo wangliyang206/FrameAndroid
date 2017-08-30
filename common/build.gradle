@@ -86,5 +86,8 @@ dependencies {
     //一个圆形的ImageView for Android(https://github.com/hdodenhof/CircleImageView)
     compile "de.hdodenhof:circleimageview:$rootProject.ext.circleimageviewVersion"
 
-    compile 'pub.devrel:easypermissions:0.3.0'
+    compile "pub.devrel:easypermissions:$rootProject.easypermissionsVersion"
+
+    //支持多进程、多线程的TrayPreferences代替SharedPreferences 的总结(https://github.com/grandcentrix/tray)
+    compile 'net.grandcentrix.tray:tray:0.12.0'
 }

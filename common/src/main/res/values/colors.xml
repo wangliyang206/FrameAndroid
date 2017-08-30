@@ -1,6 +1,7 @@
 <resources>
 
     <!-- ######################################通用###################################### -->
+    <color name="common_input_edit_color">#646464</color>
     <!-- 透明颜色 -->
     <color name="transparent_color">#00000000</color>
     <!-- 半透明 -->

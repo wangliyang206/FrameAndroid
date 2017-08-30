@@ -102,6 +102,10 @@ public abstract class BaseFragment extends Fragment {
 
     }
 
+    protected void sendRequestData(){
+
+    }
+
     protected <T extends View> T findView(int viewId) {
         return (T) mRoot.findViewById(viewId);
     }

@@ -1,45 +1,28 @@
 <resources>
+    <!--base theme light-->
+    <style name="Base.App.Theme.Light" parent="@style/Theme.AppCompat.Light">
+        <item name="android:expandableListViewStyle">@style/ExpandableListView</item>
+        <item name="android:buttonStyle">@style/ButtonWhite</item>
+        <item name="android:scrollbarSize">15dip</item>
+        <!-- 设置activity切换动画 -->
+        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+    </style>
+
     <!-- 图片选择器 -->
     <style name="MIS_NO_ACTIONBAR" parent="Theme.AppCompat.Light.NoActionBar"></style>
 
     <!-- 界面右滑动回退主题 -->
-    <style name="Theme.Swipe.Back" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
-    </style>
-
-    <!-- app默认主题(白色带操作栏) @style/Theme.Sherlock.Light.DarkActionBar-->
-    <style name="AppTheme_Light_ActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:expandableListViewStyle">@style/ExpandableListView</item>
-        <item name="android:buttonStyle">@style/ButtonWhite</item>
-        <item name="android:scrollbarSize">15dip</item>
-    </style>
-
-    <!-- app默认主题(白色不带操作栏) @style/Theme.Sherlock.Light.NoActionBar-->
-    <style name="AppTheme_Light_NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:expandableListViewStyle">@style/ExpandableListView</item>
-        <item name="android:buttonStyle">@style/ButtonWhite</item>
-        <item name="android:scrollbarSize">15dip</item>
+    <style name="ThemeSwipeBack" parent="Base.App.Theme.Light">
         <item name="android:windowBackground">@color/white_color</item>
-    </style>
-
-    <!-- app默认主题(黑色带操作栏) @style/Theme.Sherlock-->
-    <style name="AppTheme_ActionBar" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <item name="android:expandableListViewStyle">@style/ExpandableListView</item>
-        <item name="android:buttonStyle">@style/ButtonWhite</item>
-        <item name="android:scrollbarSize">15dip</item>
-    </style>
-
-    <!-- app默认主题(黑色不带操作栏) -->
-    <style name="AppTheme_NoActionBar" parent="android:Theme.NoTitleBar">
         <item name="windowActionBar">false</item>
+        <item name="android:listDivider">@drawable/divider</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:expandableListViewStyle">@style/ExpandableListView</item>
-        <item name="android:buttonStyle">@style/ButtonWhite</item>
-        <item name="android:scrollbarSize">15dip</item>
     </style>
+
+    <!-- 日间模式 -->
+    <style name="App.Theme.Light" parent="Base.App.Theme.Light" />
 
     <style name="scroll_textView">
         <item name="android:layout_width">match_parent</item>
@@ -156,13 +139,6 @@
         <item name="android:activityCloseEnterAnimation">@anim/slide_left_in</item>
         <item name="android:activityCloseExitAnimation">@anim/slide_right_out</item>
 
-    </style>
-
-    <style name="ThemeActivity" parent="@style/AppTheme_Light_NoActionBar">
-        <!-- 设置activity切换动画 -->
-        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
-        <!-- 设置没有标题 -->
-        <item name="android:windowNoTitle">true</item>
     </style>
 
     <style name="SwipeBackLayout">

@@ -57,7 +57,7 @@ ext {
     targetSdkVersion = 24
     compileSdkVersion = 24
     buildToolsVersion = "24.0.2"
-    supportLibraryVersion = '24.2.1'
+    supportLibraryVersion = '24.2.1'//  25.3.0
 
     // App dependencies
     gsonVersion='2.8.0'
@@ -75,7 +75,7 @@ ext {
     facebookSdkVersion = '4.18.0'
     buglyVersion='latest.release'
     easypermissionsVersion='0.2.1'
-    easyRecyclerViewVersion='4.2.6'
+    easyRecyclerViewVersion='4.4.0'
     circleimageviewVersion = '2.1.0'
     floatingactionbuttonVersion='1.3.0'
 

@@ -34,6 +34,7 @@ import com.cj.mobile.common.ui.Loading;
 import com.cj.mobile.common.ui.PreviewerViewPager;
 import com.cj.mobile.common.util.ImageLoader;
 import com.cj.mobile.common.util.MobileUtil;
+
 import java.io.File;
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -41,7 +42,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import butterknife.OnClick;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -183,7 +183,7 @@ public class ImageGalleryActivity extends BaseActivity implements ViewPager.OnPa
     public void onPermissionsDenied(int requestCode, List<String> perms) {
         Toast.makeText(this, R.string.gallery_save_file_not_have_external_storage_permission, Toast.LENGTH_SHORT).show();
         if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
-            new AppSettingsDialog.Builder(this).build().show();
+            new AppSettingsDialog.Builder(this, "外部存储").build().show();
         }
     }
 
