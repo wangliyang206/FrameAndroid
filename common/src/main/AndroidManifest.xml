@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cj.mobile.common"
-    android:versionCode="1"
-    android:versionName="1.0">
+    package="com.cj.mobile.common">
 
-    <uses-sdk android:minSdkVersion="13" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -12,8 +9,9 @@
     <application android:allowBackup="false">
 
         <activity
+            android:name="com.cj.mobile.common.module.multiimageselector.MultiImageSelectorActivity"
             android:configChanges="orientation|screenSize"
-            android:name="com.cj.mobile.common.module.multiimageselector.MultiImageSelectorActivity" />
+            android:hardwareAccelerated="false" />
 
     </application>
 </manifest>

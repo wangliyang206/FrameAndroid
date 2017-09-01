@@ -2,18 +2,17 @@ package com.cj.mobile.common.base;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestManager;
-import com.bumptech.glide.util.Util;
 import com.cj.mobile.common.ui.swipeback.SwipeBackActivityBase;
 import com.cj.mobile.common.ui.swipeback.SwipeBackActivityHelper;
 import com.cj.mobile.common.ui.swipeback.SwipeBackLayout;
 import com.cj.mobile.common.util.MobileUtil;
-
-import org.greenrobot.eventbus.EventBus;
+import com.cj.mobile.common.util.etoast2.EToast2;
+import com.cj.mobile.common.util.etoast2.Toast;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +28,7 @@ import butterknife.ButterKnife;
  * android:theme="@style/ThemeSwipeBack"
  */
 public abstract class BaseBackActivity extends AppCompatActivity implements SwipeBackActivityBase {
-
+    private Fragment mFragment;
     /**
      * 缓存所已打开的Activity
      */
@@ -37,7 +36,7 @@ public abstract class BaseBackActivity extends AppCompatActivity implements Swip
     public static BaseBackActivity activeAcitity;
 
     private SwipeBackActivityHelper mHelper;
-    private RequestManager mImgLoader;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,15 +67,6 @@ public abstract class BaseBackActivity extends AppCompatActivity implements Swip
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-
-        if (useGlide())
-        /*图片开始加载*/
-            Glide.with(getApplicationContext()).onStart();
-    }
-
-    @Override
     protected void onResume() {
         try {
             activeAcitity = this;
@@ -85,10 +75,6 @@ public abstract class BaseBackActivity extends AppCompatActivity implements Swip
         }
 
         super.onResume();
-
-        if (useGlide())
-            //图片恢复加载
-            Glide.with(getApplicationContext()).resumeRequests();
 
     }
 
@@ -102,18 +88,6 @@ public abstract class BaseBackActivity extends AppCompatActivity implements Swip
 
         super.onPause();
 
-        if (useGlide())
-            //图片暂停加载
-            Glide.with(getApplicationContext()).pauseRequests();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-        if (useGlide())
-        /*停止加载*/
-            Glide.with(getApplicationContext()).onStop();
     }
 
     /**
@@ -130,20 +104,11 @@ public abstract class BaseBackActivity extends AppCompatActivity implements Swip
 
         super.onDestroy();
 
-        if (useGlide())
-            if (Util.isOnMainThread())
-        /*取消图片请求*/
-                Glide.with(getApplicationContext()).onDestroy();
-
         /*销毁注解依赖*/
 //        ButterKnife.unbind(this);
 
         /*销毁View中相关内容*/
         destroyView();
-
-        //如果要使用eventbus请将此方法返回true
-        if (useEventBus())
-            EventBus.getDefault().unregister(this);
     }
 
     /**
@@ -179,24 +144,6 @@ public abstract class BaseBackActivity extends AppCompatActivity implements Swip
     }
 
     /**
-     * 是否使用eventBus,默认为(false)
-     *
-     * @return
-     */
-    protected boolean useEventBus() {
-        return false;
-    }
-
-    /**
-     * 是否使用Glide
-     *
-     * @return
-     */
-    protected boolean useGlide() {
-        return false;
-    }
-
-    /**
      * 初始化信息"通用信息"
      */
     private void init() {
@@ -205,11 +152,6 @@ public abstract class BaseBackActivity extends AppCompatActivity implements Swip
             // 缓存已打开的Activity
             cacheActivitys.put(this.getClass().getName(), this);
         }
-
-        //如果要使用eventbus请将此方法返回true
-        if (useEventBus())
-            //注册到事件主线
-            EventBus.getDefault().register(this);
     }
 
     /**
@@ -290,17 +232,6 @@ public abstract class BaseBackActivity extends AppCompatActivity implements Swip
 
     }
 
-    /**
-     * 获取一个图片加载管理器
-     *
-     * @return RequestManager
-     */
-    public synchronized RequestManager getImgLoader() {
-        if (mImgLoader == null)
-            mImgLoader = Glide.with(this);
-        return mImgLoader;
-    }
-
     public static boolean hasActivieActivity() {
         return activeAcitity != null;
     }
@@ -365,5 +296,50 @@ public abstract class BaseBackActivity extends AppCompatActivity implements Swip
         if (activeAcitity != null) {
             activeAcitity.finish();
         }
+    }
+
+    /**
+     * 新增Fragment
+     */
+    protected void addFragment(int frameLayoutId, Fragment fragment) {
+        if (fragment != null) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            if (fragment.isAdded()) {
+                if (mFragment != null) {
+                    transaction.hide(mFragment).show(fragment);
+                } else {
+                    transaction.show(fragment);
+                }
+            } else {
+                if (mFragment != null) {
+                    transaction.hide(mFragment).add(frameLayoutId, fragment);
+                } else {
+                    transaction.add(frameLayoutId, fragment);
+                }
+            }
+            mFragment = fragment;
+            transaction.commit();
+        }
+    }
+
+    /**
+     * 替换/复位Fragment
+     */
+    protected void replaceFragment(int frameLayoutId, Fragment fragment) {
+        if (fragment != null) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(frameLayoutId, fragment);
+            transaction.commit();
+        }
+    }
+
+    /** 提示 */
+    protected void showShortText(String text){
+        Toast.makeText(getApplicationContext(), text, EToast2.LENGTH_SHORT).show();
+    }
+
+    /** 提示 */
+    protected void showShortText(int resId){
+        Toast.makeText(getApplicationContext(), resId, EToast2.LENGTH_SHORT).show();
     }
 }

@@ -10,7 +10,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Process;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -24,9 +23,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.cj.mobile.common.R;
+import com.cj.mobile.common.util.etoast2.EToast2;
+import com.cj.mobile.common.util.etoast2.Toast;
 
 import java.lang.reflect.Field;
 import java.util.Timer;
@@ -301,7 +301,7 @@ public class ActivityUtils {
             public void onOver(boolean isSucceed) {
                 if (isSucceed) {
                     context.finish();
-                    Process.killProcess(Process.myPid());
+//                    Process.killProcess(Process.myPid());
                 }
             }
         };
@@ -326,8 +326,12 @@ public class ActivityUtils {
             lastClickTime = System.currentTimeMillis();
         } else {
             context.finish();
-            /*当前是退出APP后结束进程。如果不这样做，那么在APP结束后需求手动将EventBus中所注册的监听全部清除以免APP在次启动后重复注册监听*/
-            Process.killProcess(Process.myPid());
+//            /*当前是退出APP后结束进程。如果不这样做，那么在APP结束后需求手动将EventBus中所注册的监听全部清除以免APP在次启动后重复注册监听*/
+//            Process.killProcess(Process.myPid());
+//            返回到桌面
+//            Intent intent = new Intent(Intent.ACTION_MAIN);
+//            intent.addCategory(Intent.CATEGORY_HOME);
+//            context.startActivity(intent);
         }
     }
 
@@ -392,7 +396,7 @@ public class ActivityUtils {
      * 提示框
      */
     public static void showToastText(Context context, String text) {
-        Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, text, EToast2.LENGTH_SHORT).show();
     }
 
     /**
@@ -476,13 +480,13 @@ public class ActivityUtils {
     /**
      * 获取屏幕尺寸
      */
-    public static Point getScreenSize(Context context){
+    public static Point getScreenSize(Context context) {
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Display display = wm.getDefaultDisplay();
         Point out = new Point();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
             display.getSize(out);
-        }else{
+        } else {
             int width = display.getWidth();
             int height = display.getHeight();
             out.set(width, height);

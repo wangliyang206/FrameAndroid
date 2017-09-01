@@ -19,9 +19,9 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.DrawableRequestBuilder;
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
@@ -34,6 +34,8 @@ import com.cj.mobile.common.ui.Loading;
 import com.cj.mobile.common.ui.PreviewerViewPager;
 import com.cj.mobile.common.util.ImageLoader;
 import com.cj.mobile.common.util.MobileUtil;
+import com.cj.mobile.common.util.etoast2.EToast2;
+import com.cj.mobile.common.util.etoast2.Toast;
 
 import java.io.File;
 import java.util.List;
@@ -181,7 +183,7 @@ public class ImageGalleryActivity extends BaseActivity implements ViewPager.OnPa
 
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
-        Toast.makeText(this, R.string.gallery_save_file_not_have_external_storage_permission, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.gallery_save_file_not_have_external_storage_permission, EToast2.LENGTH_SHORT).show();
         if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
             new AppSettingsDialog.Builder(this, "外部存储").build().show();
         }
@@ -189,7 +191,7 @@ public class ImageGalleryActivity extends BaseActivity implements ViewPager.OnPa
 
     private void saveToFile() {
         if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            Toast.makeText(this, R.string.gallery_save_file_not_have_external_storage, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.gallery_save_file_not_have_external_storage, EToast2.LENGTH_SHORT).show();
             return;
         }
 
@@ -203,7 +205,7 @@ public class ImageGalleryActivity extends BaseActivity implements ViewPager.OnPa
             urlOrPath = path;
 
         // In this save max image size is source
-        final Future<File> future = getImgLoader()
+        final Future<File> future = Glide.with(this)
                 .load(urlOrPath)
                 .downloadOnly(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL);
 
@@ -244,9 +246,9 @@ public class ImageGalleryActivity extends BaseActivity implements ViewPager.OnPa
                     // notify
                     Uri uri = Uri.fromFile(savePath);
                     sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri));
-                    Toast.makeText(ImageGalleryActivity.this, R.string.gallery_save_file_success, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ImageGalleryActivity.this, R.string.gallery_save_file_success, EToast2.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(ImageGalleryActivity.this, R.string.gallery_save_file_failed, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ImageGalleryActivity.this, R.string.gallery_save_file_failed, EToast2.LENGTH_SHORT).show();
                 }
             }
         });
@@ -366,7 +368,7 @@ public class ImageGalleryActivity extends BaseActivity implements ViewPager.OnPa
             loadImageDoDownAndGetOverrideSize(urlOrPath, new DoOverrideSizeCallback() {
                 @Override
                 public void onDone(int overrideW, int overrideH, boolean isTrue) {
-                    DrawableRequestBuilder builder = getImgLoader()
+                    DrawableRequestBuilder builder =  Glide.with(ImageGalleryActivity.this)
                             .load(urlOrPath)
                             .listener(new RequestListener<T, GlideDrawable>() {
                                 @Override
@@ -408,7 +410,7 @@ public class ImageGalleryActivity extends BaseActivity implements ViewPager.OnPa
 
         private <T> void loadImageDoDownAndGetOverrideSize(final T urlOrPath, final DoOverrideSizeCallback callback) {
             // In this save max image size is source
-            final Future<File> future = getImgLoader().load(urlOrPath)
+            final Future<File> future =  Glide.with(ImageGalleryActivity.this).load(urlOrPath)
                     .downloadOnly(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL);
 
             getExecutor().execute(new Runnable() {

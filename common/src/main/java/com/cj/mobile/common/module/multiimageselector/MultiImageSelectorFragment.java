@@ -34,7 +34,6 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListPopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.cj.mobile.common.R;
@@ -44,6 +43,8 @@ import com.cj.mobile.common.ui.multiimageselector.bean.Folder;
 import com.cj.mobile.common.ui.multiimageselector.bean.Image;
 import com.cj.mobile.common.util.ActivityUtils;
 import com.cj.mobile.common.util.FileUtil;
+import com.cj.mobile.common.util.etoast2.EToast2;
+import com.cj.mobile.common.util.etoast2.Toast;
 
 import java.io.File;
 import java.io.IOException;
@@ -362,10 +363,10 @@ public class MultiImageSelectorFragment extends Fragment {
                         startActivityForResult(intent, REQUEST_CAMERA);
                     }
                 } else {
-                    Toast.makeText(getActivity(), R.string.mis_error_image_not_exist, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.mis_error_image_not_exist, EToast2.LENGTH_SHORT).show();
                 }
             } else {
-                Toast.makeText(getActivity(), R.string.mis_msg_no_camera, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), R.string.mis_msg_no_camera, EToast2.LENGTH_SHORT).show();
             }
         }
     }
@@ -414,7 +415,7 @@ public class MultiImageSelectorFragment extends Fragment {
                     }
                 } else {
                     if (selectImageCount() == resultList.size()) {
-                        Toast.makeText(getActivity(), R.string.mis_msg_amount_limit, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), R.string.mis_msg_amount_limit, EToast2.LENGTH_SHORT).show();
                         return;
                     }
                     resultList.add(image.path);

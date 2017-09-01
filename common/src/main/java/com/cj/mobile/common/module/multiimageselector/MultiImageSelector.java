@@ -7,9 +7,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
-import android.widget.Toast;
 
 import com.cj.mobile.common.R;
+import com.cj.mobile.common.util.etoast2.EToast2;
+import com.cj.mobile.common.util.etoast2.Toast;
 
 import java.util.ArrayList;
 
@@ -85,7 +86,7 @@ public class MultiImageSelector {
         if (hasPermission(context)) {
             activity.startActivityForResult(createIntent(context), requestCode);
         } else {
-            Toast.makeText(context, R.string.mis_error_no_permission, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.mis_error_no_permission, EToast2.LENGTH_SHORT).show();
         }
     }
 
@@ -94,7 +95,7 @@ public class MultiImageSelector {
         if (hasPermission(context)) {
             fragment.startActivityForResult(createIntent(context), requestCode);
         } else {
-            Toast.makeText(context, R.string.mis_error_no_permission, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.mis_error_no_permission, EToast2.LENGTH_SHORT).show();
         }
     }
 

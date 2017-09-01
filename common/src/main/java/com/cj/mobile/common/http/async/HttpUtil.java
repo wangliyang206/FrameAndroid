@@ -3,7 +3,6 @@ package com.cj.mobile.common.http.async;
 import android.content.Context;
 
 import com.cj.mobile.common.R;
-import com.cj.mobile.common.constant.BaseSetting;
 import com.cj.mobile.common.model.JsonMsgIn;
 import com.cj.mobile.common.model.JsonMsgOut;
 import com.cj.mobile.common.util.ActivityUtils;
@@ -29,6 +28,8 @@ import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.conn.ssl.SSLSocketFactory;
 import cz.msebera.android.httpclient.entity.StringEntity;
 import timber.log.Timber;
+
+import static okhttp3.internal.Util.UTF_8;
 
 /**
  * 网络请求工具类
@@ -326,7 +327,7 @@ public class HttpUtil {
                 if (params != null) {
                     // 转换为Json字符串
                     String jsonStr = JsonUtil.createJsonString(params);
-                    stringEntity = new StringEntity(jsonStr, BaseSetting.CONTENT_TYPE_UTF8);
+                    stringEntity = new StringEntity(jsonStr, UTF_8);
 //                    stringEntity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, contentType));
 //                    stringEntity.setContentEncoding(new BasicHeader(HTTP.CONTENT_ENCODING, HTTP.UTF_8));
                 }
@@ -421,7 +422,7 @@ public class HttpUtil {
                 if (params != null) {
                     // 转换为Json字符串
                     String jsonStr = JsonUtil.createJsonString(params);
-                    stringEntity = new StringEntity(jsonStr, BaseSetting.CONTENT_TYPE_UTF8);
+                    stringEntity = new StringEntity(jsonStr, UTF_8);
 //                    stringEntity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, contentType));
                 }
             } catch (UnsupportedCharsetException e) {
@@ -508,7 +509,7 @@ public class HttpUtil {
                 if (params != null) {
                     // 转换为Json字符串
                     String jsonStr = JsonUtil.createJsonString(params);
-                    stringEntity = new StringEntity(jsonStr, BaseSetting.CONTENT_TYPE_UTF8);
+                    stringEntity = new StringEntity(jsonStr, UTF_8);
 //                    stringEntity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, contentType));
                 }
             } catch (UnsupportedCharsetException e) {
@@ -634,7 +635,7 @@ public class HttpUtil {
                 if (params != null) {
                     // 转换为Json字符串
                     String jsonStr = JsonUtil.createJsonString(params);
-                    stringEntity = new StringEntity(jsonStr, BaseSetting.CONTENT_TYPE_UTF8);
+                    stringEntity = new StringEntity(jsonStr, UTF_8);
 //                    stringEntity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, contentType));
                 }
             } catch (UnsupportedCharsetException e) {

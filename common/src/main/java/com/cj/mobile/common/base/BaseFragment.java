@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.cj.mobile.common.util.ImageLoader;
+import com.cj.mobile.common.util.etoast2.EToast2;
+import com.cj.mobile.common.util.etoast2.Toast;
 
 import java.io.Serializable;
 
@@ -216,5 +218,15 @@ public abstract class BaseFragment extends Fragment {
 
     protected void onRestartInstance(Bundle bundle) {
 
+    }
+
+    /** 提示 */
+    protected void showShortText(String text){
+        Toast.makeText(getContext(), text, EToast2.LENGTH_SHORT).show();
+    }
+
+    /** 提示 */
+    protected void showShortText(int resId){
+        Toast.makeText(getContext(), resId, EToast2.LENGTH_SHORT).show();
     }
 }

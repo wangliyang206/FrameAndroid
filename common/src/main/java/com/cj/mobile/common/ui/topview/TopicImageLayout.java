@@ -11,7 +11,8 @@ import com.bumptech.glide.Glide;
 import com.cj.mobile.common.R;
 import com.cj.mobile.common.util.MobileUtil;
 import com.cj.mobile.common.util.NetworkUtil;
-import com.cj.mobile.common.util.ToastManager;
+import com.cj.mobile.common.util.etoast2.EToast2;
+import com.cj.mobile.common.util.etoast2.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -108,7 +109,7 @@ public class TopicImageLayout {
 
     private void toDownloadImages(AbSlidingPlayView view) {
         if (!MobileUtil.HasSDCard()) {
-            ToastManager.instance().show(activity, R.string.nstall_sd);
+            Toast.makeText(activity, R.string.nstall_sd, EToast2.LENGTH_SHORT).show();
             return;
         }
         boolean todownloadimage = NetworkUtil.isNetWorkAvilable(activity);

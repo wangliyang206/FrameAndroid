@@ -1,5 +1,6 @@
 package com.cj.mobile.common.util;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -32,6 +33,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.support.v4.app.ActivityCompat;
 import android.telephony.SmsManager;
 import android.telephony.TelephonyManager;
 import android.text.TextPaint;
@@ -43,10 +45,10 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import android.widget.Toast;
 
 import com.cj.mobile.common.R;
-import com.cj.mobile.common.constant.BaseSetting;
+import com.cj.mobile.common.util.etoast2.EToast2;
+import com.cj.mobile.common.util.etoast2.Toast;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -273,9 +275,19 @@ public class MobileUtil {
         Matcher match = p.matcher(phoneNum);
         if (match.matches()) {
             Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNum));
+            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
             context.startActivity(intent);
         } else {
-            Toast.makeText(context, ActivityUtils.getString(context, R.string.tips_phone_format_error), Toast.LENGTH_LONG).show();
+            Toast.makeText(context, R.string.tips_phone_format_error, EToast2.LENGTH_LONG).show();
         }
     }
 
@@ -284,6 +296,16 @@ public class MobileUtil {
      */
     public static void callPhoneNum(Context context, String phoneNum) {
         Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNum));
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
         context.startActivity(intent);
     }
 
@@ -757,10 +779,8 @@ public class MobileUtil {
     /**
      * 图片写入文件
      *
-     * @param bitmap
-     *            图片
-     * @param filePath
-     *            文件路径
+     * @param bitmap   图片
+     * @param filePath 文件路径
      * @return 是否写入成功
      */
     public static boolean bitmapToFile(Bitmap bitmap, String filePath) {
@@ -1369,7 +1389,7 @@ public class MobileUtil {
         if (!Validate.isEmpty(content)) {
             ClipboardManager clip = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
             clip.setText(content);
-            ToastManager.instance().show(context, R.string.copy_to_clipboard);
+            com.cj.mobile.common.util.etoast2.Toast.makeText(context, R.string.copy_to_clipboard, EToast2.LENGTH_SHORT).show();
         }
     }
 
@@ -1390,13 +1410,14 @@ public class MobileUtil {
      * 格式化金额，千分位，保留2位(默认)小数
      *
      * @param price 金额
+     * @param num   当前国家价格保留小数点后几位
      * @return 格式化的金额
      */
-    public static String formatPrice(String price) {
+    public static String formatPrice(String price, int num) {
         String formatString = TextUtils.isEmpty(price) ? "0" : price;
         NumberFormat nf = NumberFormat.getNumberInstance();
-        nf.setMaximumFractionDigits(BaseSetting.CURRENT_COUNTRY_AFTER_DOT_NUM);
-        nf.setMinimumFractionDigits(BaseSetting.CURRENT_COUNTRY_AFTER_DOT_NUM);
+        nf.setMaximumFractionDigits(num);
+        nf.setMinimumFractionDigits(num);
         return nf.format(new BigDecimal(formatString).doubleValue());
     }
 
@@ -1491,7 +1512,7 @@ public class MobileUtil {
             Method method = Activity.class.getDeclaredMethod("convertToTranslucent",
                     translucentConversionListenerClazz);
             method.setAccessible(true);
-            method.invoke(activity, new Object[] {
+            method.invoke(activity, new Object[]{
                     null
             });
         } catch (Throwable t) {
@@ -1524,6 +1545,7 @@ public class MobileUtil {
 
     /**
      * 判断当前应用是否为启动状态
+     *
      * @param context
      * @return
      */

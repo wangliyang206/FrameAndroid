@@ -21,8 +21,9 @@ import com.cj.mobile.common.ui.MyViewPager;
 import com.cj.mobile.common.ui.photoview.GestureImageView;
 import com.cj.mobile.common.util.DateFormatUtils;
 import com.cj.mobile.common.util.MobileUtil;
-import com.cj.mobile.common.util.ToastManager;
 import com.cj.mobile.common.util.Validate;
+import com.cj.mobile.common.util.etoast2.EToast2;
+import com.cj.mobile.common.util.etoast2.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -138,7 +139,7 @@ public class ShowImageActivity extends Activity {
                         //按路径执行扫描一下，如果保存的位置是相册不扫描相册不显示
                         MobileUtil.MediaScannerConnection(ShowImageActivity.this, midPath);
                         //提示
-                        ToastManager.instance().show(ShowImageActivity.this, R.string.tip_save_image_suc);
+                        Toast.makeText(ShowImageActivity.this, R.string.tip_save_image_suc, EToast2.LENGTH_SHORT).show();
                     }
                 });
 

@@ -5,11 +5,12 @@ import android.content.Context;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.load.DecodeFormat;
+import com.bumptech.glide.load.engine.cache.DiskCache;
 import com.bumptech.glide.load.engine.cache.DiskLruCacheFactory;
 import com.bumptech.glide.module.GlideModule;
 import com.bumptech.glide.request.target.ViewTarget;
 import com.cj.mobile.common.R;
-import com.cj.mobile.common.constant.BaseSetting;
+import com.cj.mobile.common.util.DiskLruCacheHelper;
 
 /**
  * @Title: GlideConfiguration
@@ -40,9 +41,11 @@ public class GlideConfiguration implements GlideModule {
 //        builder.setDiskCache(
 //                new ExternalCacheDiskCacheFactory(context, cacheSize100MegaBytes));
 
+        String IMAGE_SAVE_PATH = DiskLruCacheHelper.getDiskCacheDir(context, DiskCache.Factory.DEFAULT_DISK_CACHE_DIR).getAbsolutePath();
+
         //自定义特定的位置
         builder.setDiskCache(
-                new DiskLruCacheFactory(BaseSetting.IMAGE_SAVE_PATH, cacheSize100MegaBytes));
+                new DiskLruCacheFactory(IMAGE_SAVE_PATH, cacheSize100MegaBytes));
 
     }
 

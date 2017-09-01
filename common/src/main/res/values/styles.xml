@@ -12,13 +12,16 @@
     <style name="MIS_NO_ACTIONBAR" parent="Theme.AppCompat.Light.NoActionBar"></style>
 
     <!-- 界面右滑动回退主题 -->
-    <style name="ThemeSwipeBack" parent="Base.App.Theme.Light">
-        <item name="android:windowBackground">@color/white_color</item>
-        <item name="windowActionBar">false</item>
-        <item name="android:listDivider">@drawable/divider</item>
-        <item name="android:windowNoTitle">true</item>
+    <style name="ThemeSwipeBack" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:expandableListViewStyle">@style/ExpandableListView</item>
+        <item name="android:buttonStyle">@style/ButtonWhite</item>
+        <item name="android:scrollbarSize">15dip</item>
+        <!-- 设置activity切换动画 -->
+        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+
         <item name="android:windowIsTranslucent">true</item>
-        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/white_color</item>
+        <item name="android:listDivider">@drawable/divider</item>
     </style>
 
     <!-- 日间模式 -->

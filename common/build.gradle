@@ -35,7 +35,7 @@ dependencies {
     compile "com.google.code.gson:gson:$rootProject.gsonVersion"
     compile "com.alibaba:fastjson:$rootProject.fastjsonVersion"
 
-    //MultiDex分包
+    //MultiDex分包(https://github.com/TangXiaoLv/Android-Easy-MultiDex)
     compile "com.android.support:multidex:$rootProject.multiDexVersion"
     androidTestCompile("com.android.support:multidex-instrumentation:$rootProject.multiDexVersion") {
         exclude group: 'com.android.support', module: 'multidex'
@@ -49,9 +49,6 @@ dependencies {
 
     //添加timber日志跟踪
     compile "com.jakewharton.timber:timber:$rootProject.ext.timberVersion"
-
-    //事件总线EventBus
-    compile "org.greenrobot:eventbus:$rootProject.eventbusVersion"
 
     //二维码
     compile "com.google.zxing:core:$rootProject.zxingVersion"
@@ -85,9 +82,12 @@ dependencies {
 
     //一个圆形的ImageView for Android(https://github.com/hdodenhof/CircleImageView)
     compile "de.hdodenhof:circleimageview:$rootProject.ext.circleimageviewVersion"
-
+    //Easypermissions简化了Android M的运行时权限的申请、结果处理、判断等步骤。(https://github.com/googlesamples/easypermissions)
     compile "pub.devrel:easypermissions:$rootProject.easypermissionsVersion"
 
     //支持多进程、多线程的TrayPreferences代替SharedPreferences 的总结(https://github.com/grandcentrix/tray)
-    compile 'net.grandcentrix.tray:tray:0.12.0'
+    compile "net.grandcentrix.tray:tray:$rootProject.trayVersion"
+
+    //屏蔽系统通知，Toast无法显示的解决方案 v2.1.0正式来袭(https://github.com/Blincheng/EToast2)
+//    compile "com.github.Blincheng:EToast2:$rootProject.EToastVersion"
 }

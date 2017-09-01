@@ -26,7 +26,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.cj.mobile.common.R;
 import com.cj.mobile.common.ui.zxing.camera.CameraManager;
@@ -38,6 +37,8 @@ import com.cj.mobile.common.ui.zxing.decoding.Utils;
 import com.cj.mobile.common.ui.zxing.view.ViewfinderView;
 import com.cj.mobile.common.util.ActivityUtils;
 import com.cj.mobile.common.util.AlertDialogCustom;
+import com.cj.mobile.common.util.etoast2.EToast2;
+import com.cj.mobile.common.util.etoast2.Toast;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.ChecksumException;
@@ -162,7 +163,7 @@ public class MipcaActivityCapture extends Activity implements Callback,
         String resultString = result.getText();
         if (resultString.equals("")) {// 扫描失败
             Toast.makeText(MipcaActivityCapture.this, "Scan failed!",
-                    Toast.LENGTH_SHORT).show();
+                    EToast2.LENGTH_SHORT).show();
             MipcaActivityCapture.this.finish();
         } else {// 扫描成功
             getResult(resultString, barcode);
@@ -410,7 +411,7 @@ public class MipcaActivityCapture extends Activity implements Callback,
                                 Toast.makeText(
                                         getApplicationContext(),
                                         errorStr,
-                                        Toast.LENGTH_SHORT).show();
+                                        EToast2.LENGTH_SHORT).show();
                                 Looper.loop();
                             } else {
                                 // 数据返回
