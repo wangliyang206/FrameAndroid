@@ -4,13 +4,10 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.cj.mobile.common.ui.swipeback.SwipeBackActivityBase;
-import com.cj.mobile.common.ui.swipeback.SwipeBackActivityHelper;
+import com.cj.mobile.common.ui.swipeback.SwipeBackActivity;
 import com.cj.mobile.common.ui.swipeback.SwipeBackLayout;
-import com.cj.mobile.common.util.MobileUtil;
 import com.cj.mobile.common.util.etoast2.EToast2;
 import com.cj.mobile.common.util.etoast2.Toast;
 
@@ -27,7 +24,7 @@ import butterknife.ButterKnife;
  * 主题：
  * android:theme="@style/ThemeSwipeBack"
  */
-public abstract class BaseBackActivity extends AppCompatActivity implements SwipeBackActivityBase {
+public abstract class BaseBackActivity extends SwipeBackActivity {
     private Fragment mFragment;
     /**
      * 缓存所已打开的Activity
@@ -35,14 +32,9 @@ public abstract class BaseBackActivity extends AppCompatActivity implements Swip
     public static Map<String, BaseBackActivity> cacheActivitys = new HashMap<String, BaseBackActivity>();
     public static BaseBackActivity activeAcitity;
 
-    private SwipeBackActivityHelper mHelper;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        mHelper = new SwipeBackActivityHelper(this);
-        mHelper.onActivityCreate();
 
         /*设置窗体*/
         setForm();
@@ -63,7 +55,7 @@ public abstract class BaseBackActivity extends AppCompatActivity implements Swip
         initViewData();
 
         //初始化回退界面
-        initSwipeBack(SwipeBackLayout.EDGE_LEFT);
+        initSwipeBack(SwipeBackLayout.EDGE_LEFT, 50);
     }
 
     @Override
@@ -117,30 +109,19 @@ public abstract class BaseBackActivity extends AppCompatActivity implements Swip
      * @param edgeFlages 方向,EDGE_LEFT、EDGE_RIGHT、EDGE_BOTTOM、EDGE_ALL
      */
     protected void initSwipeBack(int edgeFlages) {
-        getSwipeBackLayout().setEdgeSize(this.getResources().getDisplayMetrics().widthPixels);
         getSwipeBackLayout().setEdgeTrackingEnabled(edgeFlages);
+        getSwipeBackLayout().setEdgeSize(this.getResources().getDisplayMetrics().widthPixels);
     }
 
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        mHelper.onPostCreate();
-    }
-
-    @Override
-    public SwipeBackLayout getSwipeBackLayout() {
-        return mHelper.getSwipeBackLayout();
-    }
-
-    @Override
-    public void setSwipeBackEnable(boolean enable) {
-        getSwipeBackLayout().setEnableGesture(enable);
-    }
-
-    @Override
-    public void scrollToFinishActivity() {
-        MobileUtil.convertActivityToTranslucent(this);
-        getSwipeBackLayout().scrollToFinishActivity();
+    /**
+     * 初始化 界面右滑动回退
+     *
+     * @param edgeFlages 方向,EDGE_LEFT、EDGE_RIGHT、EDGE_BOTTOM、EDGE_ALL
+     * @param size       边缘大小
+     */
+    protected void initSwipeBack(int edgeFlages, int size) {
+        getSwipeBackLayout().setEdgeTrackingEnabled(edgeFlages);
+        getSwipeBackLayout().setEdgeSize(size);
     }
 
     /**
@@ -333,13 +314,17 @@ public abstract class BaseBackActivity extends AppCompatActivity implements Swip
         }
     }
 
-    /** 提示 */
-    protected void showShortText(String text){
+    /**
+     * 提示
+     */
+    protected void showShortText(String text) {
         Toast.makeText(getApplicationContext(), text, EToast2.LENGTH_SHORT).show();
     }
 
-    /** 提示 */
-    protected void showShortText(int resId){
+    /**
+     * 提示
+     */
+    protected void showShortText(int resId) {
         Toast.makeText(getApplicationContext(), resId, EToast2.LENGTH_SHORT).show();
     }
 }

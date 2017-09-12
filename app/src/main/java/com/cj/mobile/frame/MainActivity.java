@@ -1,13 +1,29 @@
 package com.cj.mobile.frame;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+import com.cj.mobile.common.base.BaseActivity;
+import com.cj.mobile.common.util.ActivityUtils;
+
+import butterknife.OnClick;
+
+public class MainActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_frame);
+    protected int getViewID() {
+        return R.layout.activity_main_frame;
+    }
+
+    @OnClick({
+            R.id.txvi_frame_test
+    })
+    @Override
+    protected void onClick(View v) {
+        super.onClick(v);
+        switch (v.getId()) {
+            case R.id.txvi_frame_test:
+                ActivityUtils.jump(this, TestActivity.class);
+                break;
+        }
     }
 }

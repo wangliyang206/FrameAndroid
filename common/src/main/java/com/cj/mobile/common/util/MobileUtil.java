@@ -1456,6 +1456,8 @@ public class MobileUtil {
         return nf.format(resultDouble).replace(",", "");
     }
 
+    /*#################################################SwipeBack(开始)#################################################*/
+
     /**
      * Convert a translucent themed Activity
      * {@link android.R.attr#windowIsTranslucent} to a fullscreen opaque
@@ -1542,6 +1544,8 @@ public class MobileUtil {
         } catch (Throwable t) {
         }
     }
+
+    /*#################################################SwipeBack(结束)#################################################*/
 
     /**
      * 判断当前应用是否为启动状态
