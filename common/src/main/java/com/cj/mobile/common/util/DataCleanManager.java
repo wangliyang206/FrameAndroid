@@ -132,6 +132,15 @@ public class DataCleanManager {
     }
 
     /**
+     * 清除自定义路径下的文件，使用需小心，请不要误删。而且只支持目录下的文件删除
+     *
+     * @param file
+     */
+    public static void cleanCustomCache(File file) {
+        deleteFilesByDirectory(file);
+    }
+
+    /**
      * 清除本应用缓存数据
      *
      * @param context 上下文
@@ -151,12 +160,12 @@ public class DataCleanManager {
     public static void cleanApplicationData(Context context, String... filepath) {
         cleanInternalCache(context);
         cleanExternalCache(context);
-        cleanDatabases(context);
-        cleanSharedPreference(context);
+//        cleanDatabases(context);
+//        cleanSharedPreference(context);
         cleanFiles(context);
         cleanWebCache(context);
-        cleanBugly(context);
-        clearImageAllCache(context);
+//        cleanBugly(context);
+//        clearImageAllCache(context);
         if (filepath == null) {
             return;
         }
@@ -166,14 +175,17 @@ public class DataCleanManager {
     }
 
     /**
-     * * 删除方法 这里只会删除某个文件夹下的文件，如果传入的directory是个文件，将不做处理 * *
+     * 删除方法 这里只会删除某个文件夹下的文件，如果传入的directory是个文件，将不做处理
      *
-     * @param directory 文件目录
+     * @param directory
      */
     private static void deleteFilesByDirectory(File directory) {
         if (directory != null && directory.exists() && directory.isDirectory()) {
-            for (File item : directory.listFiles()) {
-                item.delete();
+            for (File child : directory.listFiles()) {
+                if (child.isDirectory()) {
+                    deleteFilesByDirectory(child);
+                }
+                child.delete();
             }
         }
     }

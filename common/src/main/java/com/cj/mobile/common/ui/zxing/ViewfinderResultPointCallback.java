@@ -14,20 +14,23 @@
  * limitations under the License.
  */
 
-package com.cj.mobile.common.ui.zxing.view;
+package com.cj.mobile.common.ui.zxing;
 
 import com.google.zxing.ResultPoint;
 import com.google.zxing.ResultPointCallback;
 
-public final class ViewfinderResultPointCallback implements ResultPointCallback {
+final class ViewfinderResultPointCallback implements ResultPointCallback {
 
   private final ViewfinderView viewfinderView;
 
-  public ViewfinderResultPointCallback(ViewfinderView viewfinderView) {
+  ViewfinderResultPointCallback(ViewfinderView viewfinderView) {
     this.viewfinderView = viewfinderView;
   }
 
+  @Override
   public void foundPossibleResultPoint(ResultPoint point) {
+    if(viewfinderView == null)
+      return;
     viewfinderView.addPossibleResultPoint(point);
   }
 

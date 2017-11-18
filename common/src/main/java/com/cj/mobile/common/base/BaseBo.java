@@ -7,7 +7,6 @@ import com.cj.mobile.common.domain.subscriber.ProgressSubscriber;
 import com.cj.mobile.common.domain.usecase.ErrorBundle;
 import com.cj.mobile.common.domain.usecase.IErrorBundle;
 import com.cj.mobile.common.domain.usecase.UseCase;
-import com.cj.mobile.common.http.rx.ApplySchedulers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +32,12 @@ public class BaseBo {
 
     public BaseBo(Context context) {
         this.mContext = context;
-        this.errorBundle = ErrorBundle.init(context);
+        this.errorBundle = ErrorBundle.init(context, -1);
+    }
+
+    public BaseBo(Context context, int tokenInvalid) {
+        this.mContext = context;
+        this.errorBundle = ErrorBundle.init(context, tokenInvalid);
     }
 
     private final List<Subscription> subscriptions = new ArrayList<>();
@@ -59,6 +63,7 @@ public class BaseBo {
 
     /**
      * 进行Observable转换
+     *
      * @param <T>
      * @return
      */

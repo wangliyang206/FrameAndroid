@@ -225,6 +225,19 @@ public class RegexUtil {
         return Pattern.matches(regex, url);
     }
 
+    private final static Pattern URL = Pattern.compile("^(https|http)://.*?$(net|com|.com.cn|org|me|)");
+    /**
+     * 判断是否为一个合法的url地址
+     *
+     * @param str
+     * @return
+     */
+    public static boolean isUrl(String str) {
+        if (str == null || str.trim().length() == 0)
+            return false;
+        return URL.matcher(str).matches();
+    }
+
     /**
      * 匹配中国邮政编码
      *

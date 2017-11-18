@@ -6,6 +6,9 @@
     <string name="select_scan">选择二维码/条码图片</string>
     <string name="picture_error">图片格式有误</string>
     <string name="qr_code">二维码/条码</string>
+
+    <string name="str_request_camera_message">请求获取相机权限</string>
+    <string name="permissions_camera_error">相机无法完成初始化,请正确授权。</string>
     <!-- 通用部分 -->
 
     <string name="common_no">取消</string>

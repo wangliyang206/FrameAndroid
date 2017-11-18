@@ -50,7 +50,7 @@
     <declare-styleable name="roundedimageview">
         <attr name="border_thickness" format="dimension" />
         <attr name="border_inside_color" format="color" />
-        <attr name="border_outside_color" format="color"></attr>
+        <attr name="border_outside_color" format="color"/>
     </declare-styleable>
 
     <declare-styleable name="SwipeBackLayout">
@@ -84,4 +84,8 @@
         <item>#ff9800</item>
         <item>#e91e63</item>
     </array>
+
+    <declare-styleable name="AutoScannerView">
+        <attr name="triAngleColor" format="reference|color"/>
+    </declare-styleable>
 </resources>

@@ -6,7 +6,9 @@ import com.cj.mobile.common.R;
 import com.cj.mobile.common.constant.ErrorCode;
 import com.cj.mobile.common.exception.ApiException;
 import com.cj.mobile.common.exception.HttpException;
+import com.cj.mobile.common.http.rx.RxBus;
 import com.cj.mobile.common.model.ErrorInfo;
+import com.cj.mobile.common.model.TokenInvalid;
 
 import java.io.IOException;
 
@@ -23,7 +25,14 @@ public class ErrorBundle implements IErrorBundle {
 
     public static ErrorBundle errorBundle;
 
-    public static ErrorBundle init(Context mContext) {
+    /**
+     * token失效(业务定义时不能是-1)
+     */
+    private static int tokenInvalid = -1;
+
+    public static ErrorBundle init(Context mContext,int tokenCode) {
+        tokenInvalid = tokenCode;
+
         if (errorBundle == null) {
             errorBundle = new ErrorBundle(mContext);
         }
@@ -38,7 +47,13 @@ public class ErrorBundle implements IErrorBundle {
     @Override
     public <T> void praseError(Throwable throwable, UseCase.UseCaseCallback<T> useCase) {
         ParseThrowable parseThrowable = new ParseThrowable(throwable);
-        useCase.onError(parseThrowable.getErrorCode(), parseThrowable.getErrorMessage());
+
+        //错误分两种，一种是Token失效，另一种是业务错误。
+        if (parseThrowable.getErrorCode() == tokenInvalid && tokenInvalid > -1) {
+            RxBus.getDefault().post(new TokenInvalid(parseThrowable.getErrorCode(), parseThrowable.getErrorMessage()));
+        } else {
+            useCase.onError(parseThrowable.getErrorCode(), parseThrowable.getErrorMessage());
+        }
     }
 
     private class ParseThrowable {
