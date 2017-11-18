@@ -51,9 +51,9 @@ public class ErrorBundle implements IErrorBundle {
         //错误分两种，一种是Token失效，另一种是业务错误。
         if (parseThrowable.getErrorCode() == tokenInvalid && tokenInvalid > -1) {
             RxBus.getDefault().post(new TokenInvalid(parseThrowable.getErrorCode(), parseThrowable.getErrorMessage()));
-        } else {
-            useCase.onError(parseThrowable.getErrorCode(), parseThrowable.getErrorMessage());
         }
+
+        useCase.onError(parseThrowable.getErrorCode(), parseThrowable.getErrorMessage());
     }
 
     private class ParseThrowable {

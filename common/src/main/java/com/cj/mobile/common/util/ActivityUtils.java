@@ -301,7 +301,7 @@ public class ActivityUtils {
             public void onOver(boolean isSucceed) {
                 if (isSucceed) {
                     context.finish();
-//                    Process.killProcess(Process.myPid());
+                    android.os.Process.killProcess(android.os.Process.myPid());
                 }
             }
         };
