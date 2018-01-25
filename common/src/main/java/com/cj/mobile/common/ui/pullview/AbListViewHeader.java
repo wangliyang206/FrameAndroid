@@ -120,8 +120,7 @@ public class AbListViewHeader extends LinearLayout {
 		arrowImageView.setImageBitmap(arrowImage);
 
 		// style="?android:attr/progressBarStyleSmall" 默认的样式
-		headerProgressBar = new ProgressBar(context, null,
-				android.R.attr.progressBarStyle);
+		headerProgressBar = new ProgressBar(context, null, android.R.attr.progressBarStyle);
 		headerProgressBar.setVisibility(View.GONE);
 
 		LinearLayout.LayoutParams layoutParamsWW = new LinearLayout.LayoutParams(

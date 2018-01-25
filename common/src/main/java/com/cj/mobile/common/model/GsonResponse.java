@@ -1,7 +1,5 @@
 package com.cj.mobile.common.model;
 
-import java.util.List;
-
 /**
  * @Title: GsonResponse
  * @Package com.cj.mobile.common.model
@@ -13,7 +11,7 @@ public class GsonResponse<T> {
     //响应版本
     private String version = "";
     //错误或警告信息
-    private List<ErrorInfo> errorinfo;
+    private ErrorInfo errorinfo;
     //响应信息
     private T data;
 
@@ -25,11 +23,11 @@ public class GsonResponse<T> {
         this.version = version;
     }
 
-    public List<ErrorInfo> getErrorinfo() {
+    public ErrorInfo getErrorinfo() {
         return errorinfo;
     }
 
-    public void setErrorinfo(List<ErrorInfo> errorinfo) {
+    public void setErrorinfo(ErrorInfo errorinfo) {
         this.errorinfo = errorinfo;
     }
 

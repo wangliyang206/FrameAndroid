@@ -1,14 +1,11 @@
 package com.cj.mobile.common.api;
 
-import com.cj.mobile.common.exception.ApiException;
 import com.cj.mobile.common.api.mapper.IRequestMapper;
+import com.cj.mobile.common.constant.ErrorCode;
+import com.cj.mobile.common.exception.ApiException;
 import com.cj.mobile.common.model.ErrorInfo;
 import com.cj.mobile.common.model.GsonRequest;
 import com.cj.mobile.common.model.GsonResponse;
-import com.cj.mobile.common.constant.ErrorCode;
-import com.cj.mobile.common.util.Validate;
-
-import java.util.List;
 
 import rx.Observable;
 import rx.functions.Func1;
@@ -55,9 +52,9 @@ public class ApiOperator {
                     return Observable.error(exp);
                 } else {
                     P data = pGsonResponse.getData();
-                    List<ErrorInfo> errorinfo = pGsonResponse.getErrorinfo();
-                    if (Validate.isNotEmpty(errorinfo)) {
-                        return Observable.error(new ApiException(errorinfo.get(0)));
+                    ErrorInfo errorinfo = pGsonResponse.getErrorinfo();
+                    if (errorinfo != null) {
+                        return Observable.error(new ApiException(errorinfo));
                     } else {
                         return Observable.just(data);
                     }
