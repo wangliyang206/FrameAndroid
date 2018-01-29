@@ -62,4 +62,21 @@ public class ApiOperator {
             }
         };
     }
+
+    public static final <P> Func1<P, Observable<P>> transformCustomResponse() {
+        return new Func1<P, Observable<P>>() {
+            //转化成Observable<P>
+            @Override
+            public Observable<P> call(P pGsonResponse) {
+                if (pGsonResponse == null) {
+                    ErrorInfo errorinfo = new ErrorInfo();
+                    errorinfo.setErrorcode(ErrorCode.SERVER_ERROR);
+                    ApiException exp = new ApiException(errorinfo);
+                    return Observable.error(exp);
+                } else {
+                    return Observable.just(pGsonResponse);
+                }
+            }
+        };
+    }
 }
