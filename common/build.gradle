@@ -90,4 +90,7 @@ dependencies {
 
     //屏蔽系统通知，Toast无法显示的解决方案 v2.1.0正式来袭(https://github.com/Blincheng/EToast2)
 //    compile "com.github.Blincheng:EToast2:$rootProject.EToastVersion"
+
+    //Android KITKAT 以上实现沉浸式状态栏
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
 }

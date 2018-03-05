@@ -28,8 +28,26 @@ public class BankCardTextWatcher implements TextWatcher {
     private StringBuffer buffer = new StringBuffer();
     private EditText editText;
 
+    public NumSpaceInputOverListener overListener;
+
+    public void setNumSpaceInputOverListener(NumSpaceInputOverListener overListener) {
+        this.overListener = overListener;
+    }
+
+    public interface NumSpaceInputOverListener {
+        void onOver();
+    }
+
+    public static void bind(EditText editText, NumSpaceInputOverListener overListener) {
+        new BankCardTextWatcher(editText, DEFAULT_MAX_LENGTH, overListener);
+    }
+
     public static void bind(EditText editText) {
         new BankCardTextWatcher(editText, DEFAULT_MAX_LENGTH);
+    }
+
+    public static void bind(EditText editText, int maxLength, NumSpaceInputOverListener overListener) {
+        new BankCardTextWatcher(editText, maxLength, overListener);
     }
 
     public static void bind(EditText editText, int maxLength) {
@@ -37,8 +55,13 @@ public class BankCardTextWatcher implements TextWatcher {
     }
 
     public BankCardTextWatcher(EditText editText, int maxLength) {
+        this(editText, maxLength, null);
+    }
+
+    public BankCardTextWatcher(EditText editText, int maxLength, NumSpaceInputOverListener overListener) {
         this.editText = editText;
         this.maxLength = maxLength;
+        this.overListener = overListener;
         editText.addTextChangedListener(this);
     }
 
@@ -110,18 +133,8 @@ public class BankCardTextWatcher implements TextWatcher {
             isChanged = false;
         }
 
-        if(this.overListener != null) {
+        if (this.overListener != null) {
             this.overListener.onOver();
         }
-    }
-
-    public NumSpaceInputOverListener overListener;
-
-    public void setNumSpaceInputOverListener(NumSpaceInputOverListener overListener) {
-        this.overListener = overListener;
-    }
-
-    public interface NumSpaceInputOverListener {
-        void onOver();
     }
 }

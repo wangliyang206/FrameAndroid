@@ -1,15 +1,21 @@
 package com.cj.mobile.common.base;
 
+import android.annotation.TargetApi;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
+import com.cj.mobile.common.R;
 import com.cj.mobile.common.ui.swipeback.SwipeBackActivity;
 import com.cj.mobile.common.ui.swipeback.SwipeBackLayout;
 import com.cj.mobile.common.util.etoast2.EToast2;
 import com.cj.mobile.common.util.etoast2.Toast;
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,6 +38,9 @@ public abstract class BaseBackActivity extends SwipeBackActivity {
     public static Map<String, BaseBackActivity> cacheActivitys = new HashMap<String, BaseBackActivity>();
     public static BaseBackActivity activeAcitity;
 
+    protected int mColorId = R.color.transparent_color;//状态栏的默认背景色
+    private SystemBarTintManager tintManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +54,9 @@ public abstract class BaseBackActivity extends SwipeBackActivity {
         /*依赖注入*/
         ButterKnife.bind(this);
 
+        /*沉浸式状态栏*/
+        initStateBar();
+
         /*提供对Bundle操作*/
         getBundleValues();
 
@@ -57,6 +69,61 @@ public abstract class BaseBackActivity extends SwipeBackActivity {
         //初始化回退界面
         initSwipeBack(SwipeBackLayout.EDGE_LEFT, 50);
     }
+
+
+    /**
+     * 初始化沉浸式
+     *
+     * 布局中增加：
+     * android:fitsSystemWindows="true"
+     * android:clipToPadding="false"
+     */
+    private void initStateBar() {
+        if (isNeedLoadStatusBar()) {
+            loadStateBar();
+        }
+    }
+
+    /**
+     * 子类是否需要实现沉浸式,默认需要
+     *
+     * @return
+     */
+    protected boolean isNeedLoadStatusBar() {
+        return true;
+    }
+
+    private void loadStateBar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            setTranslucentStatus(true);
+        }
+        tintManager = new SystemBarTintManager(this);
+        // 激活状态栏设置
+        tintManager.setStatusBarTintEnabled(true);
+        // 激活导航栏设置
+        tintManager.setNavigationBarTintEnabled(true);
+        // 设置一个状态栏颜色
+        tintManager.setStatusBarTintResource(getColorId());
+    }
+
+
+    @TargetApi(19)
+    private void setTranslucentStatus(boolean on) {
+        Window win = this.getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+        if (on) {
+            winParams.flags |= bits;
+        } else {
+            winParams.flags &= ~bits;
+        }
+        win.setAttributes(winParams);
+    }
+
+    protected int getColorId() {
+        return mColorId;
+    }
+
 
     @Override
     protected void onResume() {

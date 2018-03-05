@@ -7,6 +7,22 @@ apply plugin: 'dexknifePlus'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
+
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    //如果使用aar必须这么写
+    repositories {
+        //配置使用本地文件夹
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
     defaultConfig {
         applicationId "com.cj.mobile.frame"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -27,6 +43,9 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     //正常项目需要引用的
     compile project(':common')
+
+    //引用第三方包(自制)
+//    compile(name: 'common-release', ext: 'aar')
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'

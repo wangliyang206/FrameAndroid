@@ -26,4 +26,9 @@ public class MainActivity extends BaseActivity {
                 break;
         }
     }
+
+    @Override
+    protected boolean isNeedLoadStatusBar() {
+        return false;
+    }
 }
