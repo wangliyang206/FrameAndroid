@@ -5,7 +5,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.android.tools.build:gradle:2.3.3'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -49,7 +49,7 @@ ext {
     //决定此应用最高可兼容的安卓系统版本
     targetSdkVersion = 24
     compileSdkVersion = 24
-    buildToolsVersion = "24.0.2"
+    buildToolsVersion = "25.0.0"
     supportLibraryVersion = '24.2.1'//  25.3.0
 
     // App dependencies
