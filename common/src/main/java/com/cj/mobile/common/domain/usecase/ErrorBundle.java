@@ -72,7 +72,8 @@ public class ErrorBundle implements IErrorBundle {
             if (exception instanceof ApiException) {
                 ErrorInfo errorInfo = ((ApiException) exception).getErrorInfo();
                 if (errorInfo != null) {
-                    return errorInfo.getErrorcode() + ":" + errorInfo.getErrormessage();
+//                    return errorInfo.getErrorcode() + ":" + errorInfo.getErrormessage();
+                    return errorInfo.getErrormessage();
                 }
             } else if (exception instanceof IOException) {
                 return mContext.getString(R.string.net_error);
