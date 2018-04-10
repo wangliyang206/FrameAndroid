@@ -185,7 +185,7 @@ public class ImageGalleryActivity extends BaseActivity implements ViewPager.OnPa
     public void onPermissionsDenied(int requestCode, List<String> perms) {
         Toast.makeText(this, R.string.gallery_save_file_not_have_external_storage_permission, EToast2.LENGTH_SHORT).show();
         if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
-            new AppSettingsDialog.Builder(this, "外部存储").build().show();
+            new AppSettingsDialog.Builder(this).build().show();
         }
     }
 

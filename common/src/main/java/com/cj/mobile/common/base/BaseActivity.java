@@ -2,6 +2,7 @@ package com.cj.mobile.common.base;
 
 import android.annotation.TargetApi;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -355,5 +356,15 @@ public abstract class BaseActivity extends AppCompatActivity {
             transaction.replace(frameLayoutId, fragment);
             transaction.commit();
         }
+    }
+
+    /** Android中App字体大小不随系统改变而改变 */
+    @Override
+    public Resources getResources() {
+        Resources resources = super.getResources();
+        Configuration configuration = new Configuration();
+        configuration.setToDefaults();
+        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
+        return resources;
     }
 }

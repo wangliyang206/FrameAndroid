@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'com.jakewharton.butterknife'
 apply plugin: 'com.getkeepsafe.dexcount'
-apply plugin: 'dexknifePlus'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -46,15 +45,6 @@ dependencies {
 
     //引用第三方包(自制)
 //    compile(name: 'common-release', ext: 'aar')
-
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    //是在安卓5.0提出的卡片式控件，支持圆角
-    compile "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
-    //Android依赖包
-    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
-    compile "com.android.support:design:$rootProject.supportLibraryVersion"
     //【测试项目需要引用的】局部单元测试的依赖关系 （Dependencies for local unit tests）
     testCompile "junit:junit:$rootProject.junitVersion"
     //Easypermissions简化了Android M的运行时权限的申请、结果处理、判断等步骤。(https://github.com/googlesamples/easypermissions)
@@ -62,51 +52,22 @@ dependencies {
     //添加butterknife支持
     compile "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
     apt "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
-    //Jude95/EasyRecyclerView控件(RecyclerView是ListView和GridView的豪华增强版)(https://github.com/Jude95/EasyRecyclerView)
-    compile "com.jude:easyrecyclerview:$rootProject.ext.easyRecyclerViewVersion"
     //json解析
     compile "com.google.code.gson:gson:$rootProject.gsonVersion"
     compile "com.alibaba:fastjson:$rootProject.fastjsonVersion"
-    //MultiDex分包(https://github.com/TangXiaoLv/Android-Easy-MultiDex)
-    compile "com.android.support:multidex:$rootProject.multiDexVersion"
-    androidTestCompile("com.android.support:multidex-instrumentation:$rootProject.multiDexVersion") {
-        exclude group: 'com.android.support', module: 'multidex'
-    }
     //图片加载
     compile "com.github.bumptech.glide:glide:$rootProject.glideVersion"
     //添加timber日志跟踪
     compile "com.jakewharton.timber:timber:$rootProject.ext.timberVersion"
-    //事件总线EventBus
-    compile "org.greenrobot:eventbus:$rootProject.eventbusVersion"
     //二维码
     compile "com.google.zxing:core:$rootProject.zxingVersion"
     //网络请求
     compile "com.loopj.android:android-async-http:$rootProject.asynchttpVersion"
-    //添加retrofit2支持
-    compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
-    compile "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
-    compile "com.squareup.retrofit2:adapter-rxjava:$rootProject.ext.retrofitVersion"
-    compile "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.loggingVersion"
-    compile "com.squareup.okhttp3:okhttp:$rootProject.ext.loggingVersion"
-    //Rxjava和RxAndroid支持
-    compile "io.reactivex:rxjava:$rootProject.ext.rxjavaVersion"
-    compile "io.reactivex:rxandroid:$rootProject.ext.rxandroidVersion"
-    //添加腾讯bug崩溃日志跟踪(其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9)
-    compile "com.tencent.bugly:crashreport:$rootProject.ext.buglyVersion"
-    compile "com.tencent.bugly:nativecrashreport:$rootProject.ext.buglyVersion"
     //一个圆形的ImageView for Android(https://github.com/hdodenhof/CircleImageView)
     compile "de.hdodenhof:circleimageview:$rootProject.ext.circleimageviewVersion"
-    //浮动动作按钮
-    compile "com.melnykov:floatingactionbutton:$rootProject.ext.floatingactionbuttonVersion"
-    //Android开源图表库
-    compile files('libs/xcl-charts.jar')
-    //高仿IOS时间选择器、省市区三级联动(https://github.com/Bigkoo/Android-PickerView)
-    compile 'com.contrarywind:Android-PickerView:3.2.5'
     //利用FFmpeg视频录制微信小视频与其压缩处理(https://github.com/mabeijianxi/small-video-record)
     //compile 'com.mabeijianxi:small-video-record:1.2.2'
     //compile 'com.mabeijianxi:small-video-record2:2.0.3@aar'
-    //图片裁剪(https://github.com/jdamcd/android-crop)
-    compile 'com.soundcloud.android:android-crop:1.0.1@aar'
     //仿微信 拍照、拍视频(https://github.com/CJT2325/CameraView)
 //    compile project(':camera')
     //支持多进程、多线程的TrayPreferences代替SharedPreferences 的总结(https://github.com/grandcentrix/tray)
