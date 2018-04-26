@@ -23,6 +23,7 @@ import java.util.Map;
 import java.util.Set;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * 想要实现向右滑动删除Activity效果只需要继承SwipeBackActivity即可
@@ -41,6 +42,8 @@ public abstract class BaseBackActivity extends SwipeBackActivity {
 
     protected int mColorId = R.color.transparent_color;//状态栏的默认背景色
     private SystemBarTintManager tintManager;
+    /** 注解对象 */
+    private Unbinder unbinder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +56,7 @@ public abstract class BaseBackActivity extends SwipeBackActivity {
         setContentView(getViewID());
 
         /*依赖注入*/
-        ButterKnife.bind(this);
+        unbinder = ButterKnife.bind(this);
 
         /*沉浸式状态栏*/
         initStateBar();
@@ -162,10 +165,12 @@ public abstract class BaseBackActivity extends SwipeBackActivity {
                 cacheActivitys.remove(this.getClass().getName());
         }
 
-        super.onDestroy();
-
         /*销毁注解依赖*/
-//        ButterKnife.unbind(this);
+        if(unbinder != null){
+            unbinder.unbind();
+        }
+
+        super.onDestroy();
 
         /*销毁View中相关内容*/
         destroyView();

@@ -20,6 +20,7 @@ import com.cj.mobile.common.util.etoast2.Toast;
 import java.io.Serializable;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * @Title: BaseFragment
@@ -34,7 +35,8 @@ public abstract class BaseFragment extends Fragment {
     protected Bundle mBundle;
     private RequestManager mImgLoader;
     protected LayoutInflater mInflater;
-
+    /** 注解对象 */
+    private Unbinder unbinder;
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -61,7 +63,7 @@ public abstract class BaseFragment extends Fragment {
             // Do something
             onBindViewBefore(mRoot);
             // Bind view
-            ButterKnife.bind(this, mRoot);
+            unbinder = ButterKnife.bind(this, mRoot);
             // Get savedInstanceState
             if (savedInstanceState != null)
                 onRestartInstance(savedInstanceState);
@@ -77,6 +79,11 @@ public abstract class BaseFragment extends Fragment {
         super.onDestroy();
         mImgLoader = null;
         mBundle = null;
+
+        /*销毁注解依赖*/
+        if(unbinder != null){
+            unbinder.unbind();
+        }
     }
 
     @Override
