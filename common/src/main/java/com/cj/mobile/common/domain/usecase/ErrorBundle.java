@@ -1,5 +1,6 @@
 package com.cj.mobile.common.domain.usecase;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 import com.cj.mobile.common.R;
@@ -20,10 +21,11 @@ import java.io.IOException;
  * 邮箱：zhijun.zhao@21chinamall.com
  * 创建日期: 2016/5/27 10:02
  */
-public class ErrorBundle implements IErrorBundle {
+public final class ErrorBundle implements IErrorBundle {
     private Context mContext;
 
-    public static ErrorBundle errorBundle;
+    @SuppressLint("StaticFieldLeak")
+    private static ErrorBundle errorBundle;
 
     /**
      * token失效(业务定义时不能是-1)
@@ -41,7 +43,7 @@ public class ErrorBundle implements IErrorBundle {
     }
 
     private ErrorBundle(Context mContext) {
-        this.mContext = mContext;
+        this.mContext = mContext.getApplicationContext();
     }
 
     @Override
