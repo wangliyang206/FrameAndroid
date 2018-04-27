@@ -163,6 +163,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         /*销毁View中相关内容*/
         destroyView();
 
+        tintManager = null;
+        mFragment = null;
     }
 
     /**

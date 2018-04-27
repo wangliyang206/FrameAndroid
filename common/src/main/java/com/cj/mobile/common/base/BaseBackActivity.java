@@ -174,6 +174,9 @@ public abstract class BaseBackActivity extends SwipeBackActivity {
 
         /*销毁View中相关内容*/
         destroyView();
+
+        tintManager = null;
+        mFragment = null;
     }
 
     /**

@@ -360,7 +360,7 @@ public class ActivityUtils {
      * @param edtTxt  EditText控件
      */
     public static void showInputWindow(Context context, EditText edtTxt) {
-        InputMethodManager showKeyboard = (InputMethodManager) context
+        InputMethodManager showKeyboard = (InputMethodManager) context.getApplicationContext()
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
         showKeyboard.showSoftInput(edtTxt, 0);
     }
@@ -372,7 +372,7 @@ public class ActivityUtils {
      * @param edtTxt  EditText控件
      */
     public static void hideInputWindow(Context context, EditText edtTxt) {
-        InputMethodManager showKeyboard = (InputMethodManager) context
+        InputMethodManager showKeyboard = (InputMethodManager) context.getApplicationContext()
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
         showKeyboard.hideSoftInputFromWindow(edtTxt.getWindowToken(), 0);
     }
@@ -391,14 +391,14 @@ public class ActivityUtils {
      * 提示框
      */
     public static void showToastText(Context context, int resid) {
-        showToastText(context, context.getString(resid));
+        showToastText(context.getApplicationContext(), context.getString(resid));
     }
 
     /***
      * 提示框
      */
     public static void showToastText(Context context, String text) {
-        Toast.makeText(context, text, EToast2.LENGTH_SHORT).show();
+        Toast.makeText(context.getApplicationContext(), text, EToast2.LENGTH_SHORT).show();
     }
 
     /**
