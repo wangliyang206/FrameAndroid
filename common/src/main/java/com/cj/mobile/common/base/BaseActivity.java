@@ -5,8 +5,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
@@ -30,7 +28,6 @@ import butterknife.Unbinder;
  * @author 王力杨
  */
 public abstract class BaseActivity extends AppCompatActivity {
-    private Fragment mFragment;
     /**
      * 缓存所已打开的Activity
      */
@@ -39,7 +36,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected int mColorId = R.color.transparent_color;//状态栏的默认背景色
     private SystemBarTintManager tintManager;
-    /** 注解对象 */
+    /**
+     * 注解对象
+     */
     private Unbinder unbinder;
 
     @Override
@@ -66,6 +65,55 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         //初始化View数据
         initViewData();
+    }
+
+    @Override
+    protected void onResume() {
+        try {
+            activeAcitity = this;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        super.onResume();
+
+    }
+
+    @Override
+    protected void onPause() {
+        try {
+            activeAcitity = null;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        super.onPause();
+
+    }
+
+    /**
+     * 销毁
+     */
+    @Override
+    protected void onDestroy() {
+
+        //当界面关闭时释放资源
+        synchronized (BaseActivity.class) {
+            if (cacheActivitys.containsKey(this.getClass().getName()))
+                cacheActivitys.remove(this.getClass().getName());
+        }
+
+        /*销毁注解依赖*/
+        if (unbinder != null) {
+            unbinder.unbind();
+            unbinder = null;
+        }
+        super.onDestroy();
+
+        /*销毁View中相关内容*/
+        destroyView();
+
+        tintManager = null;
     }
 
     /**
@@ -117,55 +165,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         return mColorId;
     }
 
-
-    @Override
-    protected void onResume() {
-        try {
-            activeAcitity = this;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-        super.onResume();
-
-    }
-
-    @Override
-    protected void onPause() {
-        try {
-            activeAcitity = null;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-        super.onPause();
-
-    }
-
-    /**
-     * 销毁
-     */
-    @Override
-    protected void onDestroy() {
-
-        //当界面关闭时释放资源
-        synchronized (BaseActivity.class) {
-            if (cacheActivitys.containsKey(this.getClass().getName()))
-                cacheActivitys.remove(this.getClass().getName());
-        }
-
-        /*销毁注解依赖*/
-        if(unbinder != null){
-            unbinder.unbind();
-        }
-        super.onDestroy();
-
-        /*销毁View中相关内容*/
-        destroyView();
-
-        tintManager = null;
-        mFragment = null;
-    }
 
     /**
      * 初始化信息"通用信息"
@@ -239,24 +238,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
-    /***
-     * 通知更新UI
-     */
-    public void noticeUpdateUi(Bundle bundle) {
-        Set<String> set = cacheActivitys.keySet();
-        for (String key : set) {
-            cacheActivitys.get(key).updateUi(bundle);
-        }
-    }
-
-    /***
-     * 更新UI
-     */
-    public void updateUi(Bundle bundle) {
-
-    }
-
-
     public static boolean hasActivieActivity() {
         return activeAcitity != null;
     }
@@ -320,51 +301,27 @@ public abstract class BaseActivity extends AppCompatActivity {
     public static void finishActive() {
         if (activeAcitity != null) {
             activeAcitity.finish();
+            activeAcitity = null;
         }
     }
 
-    /** 提示 */
-    protected void showShortText(String text){
+    /**
+     * 提示
+     */
+    protected void showShortText(String text) {
         Toast.makeText(getApplicationContext(), text, EToast2.LENGTH_SHORT).show();
     }
 
-    /** 提示 */
-    protected void showShortText(int resId){
+    /**
+     * 提示
+     */
+    protected void showShortText(int resId) {
         Toast.makeText(getApplicationContext(), resId, EToast2.LENGTH_SHORT).show();
     }
 
-    /** 新增Fragment */
-    protected void addFragment(int frameLayoutId, Fragment fragment) {
-        if (fragment != null) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            if (fragment.isAdded()) {
-                if (mFragment != null) {
-                    transaction.hide(mFragment).show(fragment);
-                } else {
-                    transaction.show(fragment);
-                }
-            } else {
-                if (mFragment != null) {
-                    transaction.hide(mFragment).add(frameLayoutId, fragment);
-                } else {
-                    transaction.add(frameLayoutId, fragment);
-                }
-            }
-            mFragment = fragment;
-            transaction.commit();
-        }
-    }
-
-    /** 替换/复位Fragment */
-    protected void replaceFragment(int frameLayoutId, Fragment fragment) {
-        if (fragment != null) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(frameLayoutId, fragment);
-            transaction.commit();
-        }
-    }
-
-    /** Android中App字体大小不随系统改变而改变 */
+    /**
+     * Android中App字体大小不随系统改变而改变
+     */
     @Override
     public Resources getResources() {
         Resources resources = super.getResources();

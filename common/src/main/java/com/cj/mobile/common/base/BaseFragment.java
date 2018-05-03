@@ -83,6 +83,7 @@ public abstract class BaseFragment extends Fragment {
         /*销毁注解依赖*/
         if(unbinder != null){
             unbinder.unbind();
+            unbinder = null;
         }
     }
 

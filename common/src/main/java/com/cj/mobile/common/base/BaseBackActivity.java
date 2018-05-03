@@ -5,8 +5,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -33,7 +31,6 @@ import butterknife.Unbinder;
  * android:theme="@style/ThemeSwipeBack"
  */
 public abstract class BaseBackActivity extends SwipeBackActivity {
-    private Fragment mFragment;
     /**
      * 缓存所已打开的Activity
      */
@@ -42,7 +39,9 @@ public abstract class BaseBackActivity extends SwipeBackActivity {
 
     protected int mColorId = R.color.transparent_color;//状态栏的默认背景色
     private SystemBarTintManager tintManager;
-    /** 注解对象 */
+    /**
+     * 注解对象
+     */
     private Unbinder unbinder;
 
     @Override
@@ -74,10 +73,60 @@ public abstract class BaseBackActivity extends SwipeBackActivity {
         initSwipeBack(SwipeBackLayout.EDGE_LEFT, 50);
     }
 
+    @Override
+    protected void onResume() {
+        try {
+            activeAcitity = this;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        super.onResume();
+
+    }
+
+    @Override
+    protected void onPause() {
+        try {
+            activeAcitity = null;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        super.onPause();
+
+    }
+
+    /**
+     * 销毁
+     */
+    @Override
+    protected void onDestroy() {
+
+        //当界面关闭时释放资源
+        synchronized (BaseBackActivity.class) {
+            if (cacheActivitys.containsKey(this.getClass().getName()))
+                cacheActivitys.remove(this.getClass().getName());
+        }
+
+        /*销毁注解依赖*/
+        if (unbinder != null) {
+            unbinder.unbind();
+            unbinder = null;
+        }
+
+        super.onDestroy();
+
+        /*销毁View中相关内容*/
+        destroyView();
+
+        tintManager = null;
+    }
+
 
     /**
      * 初始化沉浸式
-     *
+     * <p>
      * 布局中增加：
      * android:fitsSystemWindows="true"
      * android:clipToPadding="false"
@@ -128,56 +177,6 @@ public abstract class BaseBackActivity extends SwipeBackActivity {
         return mColorId;
     }
 
-
-    @Override
-    protected void onResume() {
-        try {
-            activeAcitity = this;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-        super.onResume();
-
-    }
-
-    @Override
-    protected void onPause() {
-        try {
-            activeAcitity = null;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-        super.onPause();
-
-    }
-
-    /**
-     * 销毁
-     */
-    @Override
-    protected void onDestroy() {
-
-        //当界面关闭时释放资源
-        synchronized (BaseBackActivity.class) {
-            if (cacheActivitys.containsKey(this.getClass().getName()))
-                cacheActivitys.remove(this.getClass().getName());
-        }
-
-        /*销毁注解依赖*/
-        if(unbinder != null){
-            unbinder.unbind();
-        }
-
-        super.onDestroy();
-
-        /*销毁View中相关内容*/
-        destroyView();
-
-        tintManager = null;
-        mFragment = null;
-    }
 
     /**
      * 初始化 界面右滑动回退
@@ -272,23 +271,6 @@ public abstract class BaseBackActivity extends SwipeBackActivity {
 
     }
 
-    /***
-     * 通知更新UI
-     */
-    public void noticeUpdateUi(Bundle bundle) {
-        Set<String> set = cacheActivitys.keySet();
-        for (String key : set) {
-            cacheActivitys.get(key).updateUi(bundle);
-        }
-    }
-
-    /***
-     * 更新UI
-     */
-    public void updateUi(Bundle bundle) {
-
-    }
-
     public static boolean hasActivieActivity() {
         return activeAcitity != null;
     }
@@ -352,41 +334,7 @@ public abstract class BaseBackActivity extends SwipeBackActivity {
     public static void finishActive() {
         if (activeAcitity != null) {
             activeAcitity.finish();
-        }
-    }
-
-    /**
-     * 新增Fragment
-     */
-    protected void addFragment(int frameLayoutId, Fragment fragment) {
-        if (fragment != null) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            if (fragment.isAdded()) {
-                if (mFragment != null) {
-                    transaction.hide(mFragment).show(fragment);
-                } else {
-                    transaction.show(fragment);
-                }
-            } else {
-                if (mFragment != null) {
-                    transaction.hide(mFragment).add(frameLayoutId, fragment);
-                } else {
-                    transaction.add(frameLayoutId, fragment);
-                }
-            }
-            mFragment = fragment;
-            transaction.commit();
-        }
-    }
-
-    /**
-     * 替换/复位Fragment
-     */
-    protected void replaceFragment(int frameLayoutId, Fragment fragment) {
-        if (fragment != null) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(frameLayoutId, fragment);
-            transaction.commit();
+            activeAcitity = null;
         }
     }
 
@@ -404,7 +352,9 @@ public abstract class BaseBackActivity extends SwipeBackActivity {
         Toast.makeText(getApplicationContext(), resId, EToast2.LENGTH_SHORT).show();
     }
 
-    /** Android中App字体大小不随系统改变而改变 */
+    /**
+     * Android中App字体大小不随系统改变而改变
+     */
     @Override
     public Resources getResources() {
         Resources resources = super.getResources();
