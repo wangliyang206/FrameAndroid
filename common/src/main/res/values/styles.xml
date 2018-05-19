@@ -12,14 +12,13 @@
     <style name="MIS_NO_ACTIONBAR" parent="Theme.AppCompat.Light.NoActionBar"></style>
 
     <!-- 界面右滑动回退主题 -->
-    <style name="ThemeSwipeBack" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="ThemeSwipeBack" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="android:expandableListViewStyle">@style/ExpandableListView</item>
         <item name="android:buttonStyle">@style/ButtonWhite</item>
         <item name="android:scrollbarSize">15dip</item>
+        <item name="android:windowIsTranslucent">true</item>
         <!-- 设置activity切换动画 -->
         <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
-
-        <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@color/white_color</item>
         <item name="android:listDivider">@drawable/divider</item>
     </style>
@@ -142,12 +141,5 @@
         <item name="android:activityCloseEnterAnimation">@anim/slide_left_in</item>
         <item name="android:activityCloseExitAnimation">@anim/slide_right_out</item>
 
-    </style>
-
-    <style name="SwipeBackLayout">
-        <item name="edge_size">50dip</item>
-        <item name="shadow_left">@drawable/shadow_left</item>
-        <item name="shadow_right">@drawable/shadow_right</item>
-        <item name="shadow_bottom">@drawable/shadow_bottom</item>
     </style>
 </resources>

@@ -10,8 +10,6 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.cj.mobile.common.R;
-import com.cj.mobile.common.ui.swipeback.SwipeBackActivity;
-import com.cj.mobile.common.ui.swipeback.SwipeBackLayout;
 import com.cj.mobile.common.util.etoast2.EToast2;
 import com.cj.mobile.common.util.etoast2.Toast;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
@@ -22,6 +20,8 @@ import java.util.Set;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import me.imid.swipebacklayout.lib.SwipeBackLayout;
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
 /**
  * 想要实现向右滑动删除Activity效果只需要继承SwipeBackActivity即可

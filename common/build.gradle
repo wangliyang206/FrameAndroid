@@ -84,4 +84,7 @@ dependencies {
 
     //Android KITKAT 以上实现沉浸式状态栏
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+
+    //右滑动返回(https://github.com/ikew0ng/SwipeBackLayout)
+    compile 'me.imid.swipebacklayout.lib:library:1.3.0'
 }
