@@ -215,7 +215,7 @@ public abstract class BaseBackActivity extends SwipeBackActivity {
      * 例如：窗口样式、窗体全屏等
      */
     protected void setForm() {
-
+        
     }
 
     /**

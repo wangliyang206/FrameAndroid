@@ -12,8 +12,10 @@ import com.cj.mobile.common.base.BaseBackActivity;
  */
 
 public class TestActivity extends BaseBackActivity {
+
     @Override
     protected int getViewID() {
         return R.layout.activity_main_frame;
     }
+
 }
