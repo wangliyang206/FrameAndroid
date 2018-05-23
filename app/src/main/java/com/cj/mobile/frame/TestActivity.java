@@ -1,6 +1,11 @@
 package com.cj.mobile.frame;
 
+import android.view.View;
+
 import com.cj.mobile.common.base.BaseBackActivity;
+import com.cj.mobile.common.util.ActivityUtils;
+
+import butterknife.OnClick;
 
 /**
  * 包名： com.cj.mobile.frame
@@ -18,4 +23,14 @@ public class TestActivity extends BaseBackActivity {
         return R.layout.activity_main_frame;
     }
 
+    @OnClick(R.id.txvi_frame_test)
+    @Override
+    protected void onClick(View v) {
+        super.onClick(v);
+        switch (v.getId()) {
+            case R.id.txvi_frame_test:
+                ActivityUtils.jump(this, TestActivity.class);
+                break;
+        }
+    }
 }

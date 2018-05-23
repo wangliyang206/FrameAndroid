@@ -47,8 +47,6 @@ dependencies {
 //    compile(name: 'common-release', ext: 'aar')
     //【测试项目需要引用的】局部单元测试的依赖关系 （Dependencies for local unit tests）
     testCompile "junit:junit:$rootProject.junitVersion"
-    //Easypermissions简化了Android M的运行时权限的申请、结果处理、判断等步骤。(https://github.com/googlesamples/easypermissions)
-    compile "pub.devrel:easypermissions:$rootProject.easypermissionsVersion"
     //添加butterknife支持
     compile "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
     apt "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
