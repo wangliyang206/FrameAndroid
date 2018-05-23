@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -46,7 +45,7 @@ dependencies {
 
     //添加butterknife支持
     compile "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
-    apt "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
 
     //网络请求
     compile "com.loopj.android:android-async-http:$rootProject.asynchttpVersion"
@@ -63,7 +62,7 @@ dependencies {
     compile "com.squareup.okhttp3:okhttp:$rootProject.ext.loggingVersion"
 
     //添加dagger2支持
-    apt "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
     provided 'org.glassfish:javax.annotation:10.0-b28'
     compile "com.google.dagger:dagger:$rootProject.ext.daggerVersion"
 

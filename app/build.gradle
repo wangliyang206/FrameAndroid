@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'com.jakewharton.butterknife'
 apply plugin: 'com.getkeepsafe.dexcount'
 
@@ -49,7 +48,7 @@ dependencies {
     testCompile "junit:junit:$rootProject.junitVersion"
     //添加butterknife支持
     compile "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
-    apt "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
     //json解析
     compile "com.google.code.gson:gson:$rootProject.gsonVersion"
     compile "com.alibaba:fastjson:$rootProject.fastjsonVersion"

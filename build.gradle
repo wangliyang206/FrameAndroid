@@ -11,10 +11,6 @@ buildscript {
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
 
-        //注解更好（所以Android Studio IDE支持交互更好的与Dagger）
-        // Better IDE support for annotations (so Android Studio interacts better with Dagger)
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-
         //计算方法数量(https://github.com/KeepSafe/dexcount-gradle-plugin)
         classpath ('com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.6.1') {
             exclude group: "com.android.tools.build", module: "gradle"
@@ -23,7 +19,7 @@ buildscript {
         }
 
         //ButterKnife
-        classpath 'com.jakewharton:butterknife-gradle-plugin:8.4.0'
+        classpath 'com.jakewharton:butterknife-gradle-plugin:8.8.1'
     }
 }
 
@@ -56,7 +52,7 @@ ext {
     frescoVersion='0.14.1'
     timberVersion = '4.5.1'
     fastjsonVersion='1.2.21'
-    butterknifeVersion='8.4.0'
+    butterknifeVersion='8.8.1'
     disklrucacheVersion='2.0.2'
     buglyVersion='latest.release'
     circleimageviewVersion = '2.1.0'
