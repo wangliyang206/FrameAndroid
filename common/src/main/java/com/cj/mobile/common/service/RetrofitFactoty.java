@@ -1,5 +1,7 @@
 package com.cj.mobile.common.service;
 
+import com.cj.mobile.common.util.SSLSocketClient;
+
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -51,12 +53,14 @@ public class RetrofitFactoty {
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .connectTimeout(40, TimeUnit.SECONDS)       //请求超时
-                .writeTimeout(30, TimeUnit.SECONDS)         //写入超时
-                .readTimeout(30, TimeUnit.SECONDS)          //读取超时
-                .addInterceptor(new Retry(3))             //添加自定义拦截(网络请求，超时重试)
-                .addInterceptor(interceptor)                            //添加消息（log）拦截
+                .connectTimeout(40, TimeUnit.SECONDS)                                     // 请求超时
+                .writeTimeout(30, TimeUnit.SECONDS)                                       // 写入超时
+                .readTimeout(30, TimeUnit.SECONDS)                                        // 读取超时
+                .addInterceptor(new Retry(3))                                            // 添加自定义拦截(网络请求，超时重试)
+                .addInterceptor(interceptor)                                                        // 添加消息（log）拦截
 //                .addNetworkInterceptor(new GzipRequestInterceptor())    //GZIP数据压缩
+                .sslSocketFactory(SSLSocketClient.getSSLSocketFactory())                            // 配置SSlSocketFactory
+                .hostnameVerifier(SSLSocketClient.getHostnameVerifier())                            // 配置一个HostnameVerifier来忽略host验证
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()

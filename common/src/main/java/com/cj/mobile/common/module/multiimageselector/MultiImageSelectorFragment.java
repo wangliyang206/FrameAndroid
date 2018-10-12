@@ -183,6 +183,10 @@ public class MultiImageSelectorFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if (mImageAdapter.isShowCamera()) {
                     if (i == 0) {
+                        if (selectImageCount() == resultList.size()) {
+                            Toast.makeText(getActivity(), R.string.mis_msg_amount_limit, EToast2.LENGTH_SHORT).show();
+                            return;
+                        }
                         showCameraAction();
                     } else {
                         Image image = (Image) adapterView.getAdapter().getItem(i);
