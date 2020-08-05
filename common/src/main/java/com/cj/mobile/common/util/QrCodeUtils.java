@@ -111,6 +111,7 @@ public class QrCodeUtils {
 	 * @return
 	 * @throws WriterException
 	 */
+	@Deprecated
 	public static Bitmap Create2DCode(String str) throws WriterException {
 		// 生成二维矩阵,编码时指定大小,不要生成了图片以后再进行缩放,这样会模糊导致识别失败
 		BitMatrix matrix = new MultiFormatWriter().encode(str,
